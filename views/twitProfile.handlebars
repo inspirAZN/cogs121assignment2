@@ -3,6 +3,8 @@
 	<h1> Hello, {{userProfile.displayName}}! You are currently signed in as {{userProfile.username}} on {{userProfile.provider}}! </h1>
 
 	<br/>
-	{{userProfile}}
+	<script>
+	console.log({{userProfile}});
+	</script>
 
 {{> footer}}
