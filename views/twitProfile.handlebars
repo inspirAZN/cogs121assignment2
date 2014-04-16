@@ -148,7 +148,7 @@
 				dataType: 'json'
 			}).done( function(response) {
 				if (response.msg === '') {
-					// displayTweets();
+					displayTweets( response );
 					console.log(response);
 				} else {
 					alert(response.msg);
@@ -156,6 +156,10 @@
 			});
 
 
+			function displayTweets( tweetsJSON ) {
+				var numTweets = tweetsJSON.tweet.length;
+				console.log(numTweets);
+			} 
 
 
 
