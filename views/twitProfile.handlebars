@@ -50,11 +50,13 @@
 		var numFollowers = $('#followers').text()
 		var numFollowing = $('#following').text();
 
-		var ratio = numFollowers/numFollowing;
+
+		var rawRatio = numFollowers/numFollowing;
+		var ratio = Math.floor(rawRatio * 100) / 100;
 
 		// area to append ratio
 		var ratioDisplay = $('#ratio');
-		var displayMessge = $('#displayMessage')
+		var displayMessge = $('#displayMessage');
 
 		// display messages
 		var low = "Hmmm... That's a low score.  Have you gotten all of your friends to follow you?";
