@@ -23,6 +23,7 @@
 							<div class="row-fluid">
 								<h2> Your Follower to Following ratio is:</h2>
 								<h1 id="ratio"> </h1>
+								<span id="displayMessage"> </span>
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -53,6 +54,7 @@
 
 		// area to append ratio
 		var ratioDisplay = $('#ratio');
+		var displayMessge = $('#displayMessage')
 
 		// display messages
 		var low = "Hmmm... That's a low score.  Have you gotten all of your friends to follow you?";
@@ -60,11 +62,14 @@
 		var high = "Are you a celebrity?!";
 
 		if( ratio < .5 ) {
-			ratioDisplay.text(low);
+			ratioDisplay.text(ratio);
+			displayMessage.text(low);
 		} else if ( ratio < 1 ) {
-			ratioDisplay.text(med);
+			ratioDisplay.text(ratio);
+			displayMessage.text(med);
 		} else {
-			ratioDisplay.text(high);
+			ratioDisplay.text(ratio);
+			displayMessage.text(high);
 		}
 
 	});
