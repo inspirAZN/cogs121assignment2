@@ -15,6 +15,7 @@ passport.use(new TwitterStrategy({
     user.token = token;
     user.tokenSecret = tokenSecret;
     user.profile = profile;
+    console.log(user);
     done();
   }
 ));
