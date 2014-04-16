@@ -39,7 +39,7 @@ exports.profile = function(req, res) {
 }
 
 exports.randTweets = function (req, res) {
-		auth.T.get('search/tweets', { q: req.body, count: 10 }, function(err, reply) {
+		auth.T.get('search/tweets', { q: req.body.randQuery, count: 10 }, function(err, reply) {
 		var tweetInfo = [];
 		var status;
 		var searchCount = 0;
@@ -65,11 +65,11 @@ exports.randTweets = function (req, res) {
 
 	    if ( searchCount == 0 ) {
 	    	msg = 'No results for ';
-	    	msg += req.body;
+	    	msg += req.body.randQuery;
 	    }
 		res.send( {
 			tweet: tweetInfo,
-			query: req.body.tweet,
+			query: req.body.randQuery,
 			msg: msg
 		});
 	});

@@ -133,7 +133,9 @@
 			var toQuery = array[randInt];
 
 			// set the input value
-			$('#randQuery').attr('value', toQuery);
+			$('#randQuery').val(toQuery);
+
+			console.log($('#randQuery').val);
 
 			// AJAX call to get tweets matching the query
 
