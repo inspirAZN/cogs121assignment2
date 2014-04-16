@@ -12,21 +12,29 @@
 					<a href="/twit/json">User JSON</a>
 				</header>
 				<div class="panel-body">
-					<ul class="list-unstyled">
-						<li>Latest status:
-							<ul class="list-unstyled">
-								<li> On: {{userProfile._json.status.created_at}} </li>
-								<li><i> "{{userProfile._json.status.text}}" </i></li>
-							</ul>
-						</li>
-						<li># Followers: {{userProfile._json.followers_count}}</li>
-						<li># Following: {{userProfile._json.friends_count}}</li>
-					</ul>
+					<div class="col-lg-12">
+						<div class="col-lg-6">
+							<div class="row-fluid">
+								The number of people following you is {{userProfile._json.followers_count}}.
+							</div>
+							<div class="row-fluid">
+								The number of people you are following is {{userProfile._json.friends_count}}.
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="row-fluid">
+								<h4> Your last status was on {{userProfile._json.status.created_at}} </h4>
+							</div>
+							<div class="row-fluid">
+								You said:
+							</div>
+							<div class="row-fluid">
+								<i> "{{userProfile._json.status.text}}" </i>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			
 		</div>
-
-	</div>
 
 {{> footer}}
