@@ -20,14 +20,15 @@
 							<div class="row-fluid">
 								The number of people you are following is <span id="following">{{userProfile._json.friends_count}}</span>.
 							</div>
-							<div class="row-fluid">
+							<div class="row-fluid text-center">
 								<h2> Your Follower to Following ratio is:</h2>
 								<h1 id="ratio"> </h1>
-								<span id="displayMessage"> </span>
 								<div class="progress progress-striped active">
 								  	<div id="ratioBar" class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
 								  	</div>
 								</div>
+								<br/>
+								<span id="displayMessage"> </span>
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -39,8 +40,11 @@
 							</div>
 							<div class="row-fluid">
 								<h3>
-									<i> "{{userProfile._json.status.text}}" </i>
+									<span id="userStatus"><i> "{{userProfile._json.status.text}}" </i> </span>
 								</h3>
+							</div>
+							<div class="row-fluid">
+								<a id="randTwitSearch" href="#"> Click here to do something cool with this status </a>
 							</div>
 						</div>
 					</div>
@@ -90,9 +94,32 @@
 			bar.addClass('progress-bar-success');
 		}
 
+		if (percentage > 100) {
+			// prevent overflow
+			percentage = 100;
+		}
+
 		// set the bar
 		bar.attr('aria-valuenow', percentage);
 		bar.css('width', percentage);
+
+		// random twitter search
+
+		$('#randTwitSearch').click( searchTweets );
+
+		function searchTweets() {
+			// get the text of the status
+			var status = $('#userStatus');
+			var statusString = status.text;
+			// convert the string into an array of words from the status
+			var array = var array = string.split(' ');
+
+			// generate a random number between 0 and the size of the array
+			var randInt = Math.floor((Math.random()*array.length)+1);
+
+			console.log(randInt);
+			console.log(array[randInt]);
+		}
 
 	});
 </script>
