@@ -20,6 +20,10 @@
 							<div class="row-fluid">
 								The number of people you are following is <span id="following">{{userProfile._json.friends_count}}</span>.
 							</div>
+							<div class="row-fluid">
+								<h2> Your Follower to Following ratio is:</h2>
+								<h1 id="ratio"> </h1>
+							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="row-fluid">
@@ -40,10 +44,28 @@
 {{> globaljs}}
 <script>
 	$(document).ready( function (){
-		var numFollowers = $('#folowers').text();
+
+		// calculate follower:following ratio
+		var numFollowers = $('#followers').text()
 		var numFollowing = $('#following').text();
 
-		console.log(numFollowers + " " + numFollowing);
+		var ratio = numFollowers/numFollowing;
+
+		// area to append ratio
+		var ratioDisplay = $('#ratio');
+
+		// display messages
+		var low = "Hmmm... That's a low score.  Have you gotten all of your friends to follow you?";
+		var med = "Not bad! Try tapping into your Facebook friends if you haven't already.";
+		var high = "Are you a celebrity?!";
+
+		if( ratio < .5 ) {
+			ratioDisplay.text(low);
+		} else if ( ratio < 1 ) {
+			ratioDisplay.text(med);
+		} else {
+			ratioDisplay.text(high);
+		}
 
 	});
 </script>
