@@ -15,12 +15,12 @@
 					<ul class="list-unstyled">
 						<li>Latest status:
 							<ul class="list-unstyled">
-								<li> On: {{userProfile.status.created_at}} </li>
-								<li><i> "{{userProfile.status.text}}" </i></li>
+								<li> On: {{userProfile._json.status.created_at}} </li>
+								<li><i> "{{userProfile._json.status.text}}" </i></li>
 							</ul>
 						</li>
-						<li># Followers: {{userProfile.followers_count}}</li>
-						<li># Following: {{userProfile.friends_count}}</li>
+						<li># Followers: {{userProfile._json.followers_count}}</li>
+						<li># Following: {{userProfile._json.friends_count}}</li>
 					</ul>
 				</div>
 			</div>
