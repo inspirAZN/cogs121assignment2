@@ -9,7 +9,7 @@ var passport = require('passport')
 passport.use(new TwitterStrategy({
     consumerKey: process.env.twitter_consumer_key,
     consumerSecret: process.env.twitter_consumer_secret,
-    callbackURL: "http://http://jcalassignment1.herokuapp.com/authn/twitter/callback"
+    callbackURL: "http://jcalassignment1.herokuapp.com/authn/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
     user.token = token;
