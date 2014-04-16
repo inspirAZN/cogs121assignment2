@@ -37,3 +37,40 @@ exports.profile = function(req, res) {
 	res.render('twitProfile', { userProfile: req.user.profile,
 								profilepic: profilepic });
 }
+
+exports.randTweets = function (req, res) {
+		auth.T.get('search/tweets', { q: req.body, count: 10 }, function(err, reply) {
+		var tweetInfo = [];
+		var status;
+		var searchCount = 0;
+		var msg;
+
+		console.log(req.body.tweet);
+
+	    if (err) {
+	        console.dir(err);
+	    } else {
+	        for (var i = 0; i < reply.statuses.length; i++) {
+	            searchCount++;
+	            status = reply.statuses[i];
+	            var tempJSON = {};
+
+	            tempJSON.username = status.user.name;
+	            tempJSON.tweet = status.text;
+	            tempJSON.time = status.created_at;
+
+	            tweetInfo.push(tempJSON);
+	        }
+	    }
+
+	    if ( searchCount == 0 ) {
+	    	msg = 'No results for ';
+	    	msg += req.body;
+	    }
+		res.send('twitSearch', {
+			tweet: tweetInfo,
+			query: req.body.tweet,
+			message: ''
+		});
+	});
+}
