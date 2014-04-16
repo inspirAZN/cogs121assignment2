@@ -149,12 +149,10 @@
 			}).done( function(response) {
 				if (response.msg === '') {
 					// displayTweets();
-					alert('success');
+					console.log(response);
 				} else {
 					alert(response.msg);
 				}
-
-				console.log(response);
 			});
 
 
