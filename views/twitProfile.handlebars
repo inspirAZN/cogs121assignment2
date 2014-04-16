@@ -138,11 +138,13 @@
 			console.log($('#randQuery').val());
 
 			// AJAX call to get tweets matching the query
+			var queryURL = '/twit/randTweets/';
+				queryURL += toQuery;
 
 			$.ajax({
 				type: 'POST',
 				data: toQuery,
-				url: '/twit/randTweets',
+				url: queryURL,
 				dataType: 'json'
 			}).done( function(response) {
 				if (response.msg === '') {

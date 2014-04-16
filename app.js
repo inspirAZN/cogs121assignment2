@@ -38,7 +38,7 @@ app.get('/', index.view);
 app.get('/twit', twit.view);
 app.post('/twit/search', twit.search);
 app.get('/twit/profile', twit.profile);
-app.post('/twit/randTweets', twit.randTweets);
+app.post('/twit/randTweets/:query', twit.randTweets);
 app.get('/twit/json', function(req, res) {
 	res.json(req.user);
 })
