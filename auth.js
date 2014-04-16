@@ -7,12 +7,13 @@ var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
   , user = {};
 
-passport.serializeUser(function(_user, done) {
-  done(null, user.id);
-})
-passport.deserializeUser(function(id, done) {
+passport.serializeUser(function(user, done) {
   done(null, user);
-})
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 passport.use(new TwitterStrategy({
     consumerKey: process.env.twitter_consumer_key,
