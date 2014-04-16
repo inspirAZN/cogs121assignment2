@@ -109,7 +109,8 @@
 			e.preventDefault();
 			// get the text of the status
 			var status = $('#userStatus');
-			var statusString = status.text;
+			var statusString = "";
+				statusString += status.text;
 			// convert the string into an array of words from the status
 			var array = statusString.split(' ');
 
