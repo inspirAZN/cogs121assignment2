@@ -105,14 +105,14 @@
 
 		// random twitter search
 
-		$('#randTwitSearch').click( searchTweets );
+		$('#randTwitSearch').click( searchTweets() );
 
 		function searchTweets() {
 			// get the text of the status
 			var status = $('#userStatus');
 			var statusString = status.text;
 			// convert the string into an array of words from the status
-			var array = var array = string.split(' ');
+			var array = string.split(' ');
 
 			// generate a random number between 0 and the size of the array
 			var randInt = Math.floor((Math.random()*array.length)+1);
