@@ -38,6 +38,9 @@ app.get('/', index.view);
 app.get('/twit', twit.view);
 app.post('/twit/search', twit.search);
 app.get('/twit/profile', twit.profile);
+app.get('/twit/json', function(req, res) {
+	res.json(req.user);
+})
 
 
 app.get('/authn/twitter', auth.passport.authenticate('twitter'));
