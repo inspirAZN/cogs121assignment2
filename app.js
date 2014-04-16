@@ -38,6 +38,7 @@ app.get('/', index.view);
 app.get('/twit', twit.view);
 app.post('/twit/search', twit.search);
 app.get('/authn/twitter', auth.passport.authenticate('twitter'));
+// app.get('/twit/login', twit.login);
 app.get('/authn/twitter/callback', 
   auth.passport.authenticate('twitter', { successRedirect: '/',
                                      failureRedirect: '/failure' }));

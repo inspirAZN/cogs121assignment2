@@ -2,57 +2,35 @@
 var dotenv = require('dotenv');
 dotenv.load();
 
+var graph = require('fbgraph');
 var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
   , user = {};
+
+passport.serializeUser(function(_user, done) {
+  done(null, user.id);
+})
+passport.deserializeUser(function(id, done) {
+  done(null, user);
+})
 
 passport.use(new TwitterStrategy({
     consumerKey: process.env.twitter_consumer_key,
     consumerSecret: process.env.twitter_consumer_secret,
     callbackURL: "http://jcalassignment1.herokuapp.com/authn/twitter/callback"
+    // callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+
   },
   function(token, tokenSecret, profile, done) {
     user.token = token;
     user.tokenSecret = tokenSecret;
     user.profile = profile;
     console.log(user);
-    done();
+    done(null, user);
   }
 ));
 
 exports.passport = passport;
-
-// var cofig = { };
-
-// config.rootUrl = process.env.ROOT_URL;
-// config.facebook = {
-// 	appID: process.env.fb_id
-// 	appSecret: process.env.fb_secret
-// 	appNamespace: process.env.FACEBOOK_APPNAMESPACE
-// 	redirect_uri: process.env.FACEBOOK_REDIRECTURI
-// }
-
-// module.exports = config;
-/**
-* Add your authentication apis here with example like the bottom
-*/
-/**
-//add instagram api setup
-var ig = require('instagram-node-lib');
-ig.set('client_id', process.env.instagram_client_id);
-ig.set('client_secret', process.env.instagram_client_secret);
-
-//export ig as a parameter to be used by other methods that require it.
-exports.ig = ig;
-**/
-
-// var graph = require('fbgraph');
-
-// // get authorization url
-//     var authUrl = graph.getOauthUrl({
-//         "client_id":     conf.client_id
-//       , "redirect_uri":  conf.redirect_uri
-//     });
 
 var Twit = require('twit');
 
@@ -64,3 +42,8 @@ var T = new Twit({
 })
 
 exports.T = T;
+
+
+// facebook
+
+

@@ -31,3 +31,7 @@ exports.search = function (req, res) {
 		});
 	});
 }
+
+exports.login = function(req, res) {
+
+}
