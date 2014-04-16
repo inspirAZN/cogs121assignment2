@@ -43,7 +43,7 @@ exports.randTweets = function (req, res) {
 		var tweetInfo = [];
 		var status;
 		var searchCount = 0;
-		var msg;
+		var msg = '';
 
 		console.log(req.params.query);
 
