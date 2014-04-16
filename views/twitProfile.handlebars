@@ -133,7 +133,7 @@
 
 			$.ajax({
 				type: 'POST',
-				data: newUser,
+				data: toQuery,
 				url: 'twit/randTweets',
 				dataType: 'text'
 			}).done( function(response) {
