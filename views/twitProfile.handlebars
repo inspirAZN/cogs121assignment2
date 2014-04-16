@@ -72,18 +72,25 @@
 		var high = "Are you a celebrity?!";
 
 		if( ratio < .5 ) {
+			// number
 			ratioDisplay.text(ratio);
+			// message
 			displayMessage.text(low);
+			// bar color
+			bar.addClass('progress-bar-danger');
 
 		} else if ( ratio < 1 ) {
 			ratioDisplay.text(ratio);
 			displayMessage.text(med);
+			bar.addClass('progress-bar-warning');
 		} else {
 			ratioDisplay.text(ratio);
 			displayMessage.text(high);
+			bar.addClass('progress-bar-success');
 		}
 
-		ratioBar.attr('aria-valuenow', percentage);
+		// set the bar
+		bar.attr('aria-valuenow', percentage);
 
 	});
 </script>
