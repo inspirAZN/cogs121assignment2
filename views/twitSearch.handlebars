@@ -1,0 +1,15 @@
+{{> header}}
+
+	<h1> Displaying last tweets of your search for "{{query}}". </h1>
+
+	{{#each tweet}}
+		<ul>
+			<li>{{username}}</li>
+			<li>Says: {{tweet}}</li>
+			<li>on: {{time}}</li>
+		</ul>
+	{{/each}}
+
+{{> footer}}
+    
+	

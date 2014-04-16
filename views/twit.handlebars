@@ -1,0 +1,13 @@
+{{> header}}
+	
+	<form id="searchTweets" role="form" method="post" action="/twit/search">
+        <h3>View Tweets</h3>
+        <div class="form-group">
+          <input type="text" class="form-control" id="tweet" placeholder="Search Tweets" name="tweet">
+        </div>
+        <input type="submit" id="submitBtn" class="btn btn-default" value="Search Tweets"></input>
+    </form>
+
+    <a href="/authn/twitter">Sign in with Twitter</a>
+
+{{> footer}}
