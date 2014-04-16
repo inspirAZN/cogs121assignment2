@@ -13,8 +13,14 @@
 				</header>
 				<div class="panel-body">
 					<ul class="list-unstyled">
-						<li># Followers:</li>
-						<li># Following:</li>
+						<li>Latest status:
+							<ul class="list-unstyled">
+								<li> On: {{userProfile.status.created_at}} </li>
+								<li><i> "{{}userProfile.status.text}" </i></li>
+							</ul>
+						</li>
+						<li># Followers: {{userProfile.followers_count}}</li>
+						<li># Following: {{userProfile.friends_count}}</li>
 					</ul>
 				</div>
 			</div>
