@@ -40,7 +40,7 @@
 							</div>
 							<div class="row-fluid">
 								<h3>
-									<i> "<span id="userStatus">{{userProfile._json.status.text}}"</span>"</i> 
+									<i> "<span id="userStatus">{{userProfile._json.status.text}}</span>"</i> 
 								</h3>
 							</div>
 							<div class="row-fluid">
@@ -108,14 +108,15 @@
 		$('#randTwitSearch').click( function (e) {
 			e.preventDefault();
 			// get the text of the status
-			var status = $('#userStatus');
 			var statusString = "";
-				statusString += status.text;
+				statusString += status.text();
+
 			// convert the string into an array of words from the status
 			var array = statusString.split(' ');
 
+			var arrayFloor = array.length-1;
 			// generate a random number between 0 and the size of the array
-			var randInt = Math.floor((Math.random()*array.length)+1);
+			var randInt = Math.floor((Math.random()*arrayFloor)+1);
 
 			console.log(statusString);
 			console.log(randInt);
@@ -123,7 +124,7 @@
 			console.log(array[0]);
 			console.log(array[1]);
 			console.log(array[array.length-1]);
-			console.log(array[array.length]);
+			console.log(array[arrayFloor]);
 
 
 
