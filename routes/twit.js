@@ -33,7 +33,7 @@ exports.search = function (req, res) {
 }
 
 exports.profile = function(req, res) {
-	var profilepic = req.user.profile.photos[0];
+	var profilepic = req.user.profile.photos.value;
 	res.render('twitProfile', { userProfile: req.user.profile,
 								profilepic: profilepic });
 }
