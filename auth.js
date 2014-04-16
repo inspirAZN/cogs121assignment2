@@ -3,6 +3,8 @@ var dotenv = require('dotenv');
 dotenv.load();
 
 var graph = require('fbgraph');
+
+// Twitter login
 var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy
   , user = {};
