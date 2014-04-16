@@ -135,7 +135,7 @@
 				type: 'POST',
 				data: toQuery,
 				url: '/twit/randTweets',
-				dataType: 'text'
+				dataType: 'json'
 			}).done( function(response) {
 				if (response.msg === '') {
 					// displayTweets();
