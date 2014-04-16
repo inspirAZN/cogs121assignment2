@@ -37,10 +37,13 @@ app.get('/', index.view);
 // twitter routes
 app.get('/twit', twit.view);
 app.post('/twit/search', twit.search);
+app.get('/twit/profile', function (req,res) {
+	res.json(req.user);
+})
 app.get('/authn/twitter', auth.passport.authenticate('twitter'));
 // app.get('/twit/login', twit.login);
 app.get('/authn/twitter/callback', 
-  auth.passport.authenticate('twitter', { successRedirect: '/',
+  auth.passport.authenticate('twitter', { successRedirect: '/twit/profile',
                                      failureRedirect: '/failure' }));
 app.get('/failure', twit.view);
 
