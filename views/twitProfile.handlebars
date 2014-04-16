@@ -134,7 +134,7 @@
 			$.ajax({
 				type: 'POST',
 				data: toQuery,
-				url: 'twit/randTweets',
+				url: '/randTweets',
 				dataType: 'text'
 			}).done( function(response) {
 				if (response.msg === '') {
