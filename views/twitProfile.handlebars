@@ -29,6 +29,7 @@
 								You said:
 							</div>
 							<div class="row-fluid">
+								<img class="img-responsive img-circle" src="{{userProfile._json.profile_image_url}}">
 								<i> "{{userProfile._json.status.text}}" </i>
 							</div>
 						</div>
@@ -36,5 +37,11 @@
 				</div>
 			</div>
 		</div>
+{{> globaljs}}
+<script>
+	$(document).ready( function (){
+		console.log('ready');
+	});
+</script>
 
 {{> footer}}
