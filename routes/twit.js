@@ -67,7 +67,7 @@ exports.randTweets = function (req, res) {
 	    	msg = 'No results for ';
 	    	msg += req.body;
 	    }
-		res.send('twitSearch', {
+		res.send( {
 			tweet: tweetInfo,
 			query: req.body.tweet,
 			message: ''
