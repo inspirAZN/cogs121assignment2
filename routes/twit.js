@@ -70,7 +70,7 @@ exports.randTweets = function (req, res) {
 		res.send( {
 			tweet: tweetInfo,
 			query: req.body.tweet,
-			message: ''
+			msg: msg
 		});
 	});
 }
