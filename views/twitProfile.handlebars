@@ -15,10 +15,10 @@
 					<div class="col-lg-12">
 						<div class="col-lg-6">
 							<div class="row-fluid">
-								The number of people following you is {{userProfile._json.followers_count}}.
+								The number of people following you is <span id="followers">{{userProfile._json.followers_count}}</span>.
 							</div>
 							<div class="row-fluid">
-								The number of people you are following is {{userProfile._json.friends_count}}.
+								The number of people you are following is <span id="following">{{userProfile._json.friends_count}}</span>.
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -40,9 +40,10 @@
 {{> globaljs}}
 <script>
 	$(document).ready( function (){
-		var profilePic = $('#profPic').attr('src');
+		var numFollowers = $('#folowers').text();
+		var numFollowing = $('#following').text();
 
-		console.log(profilePic);
+		console.log(numFollowers + " " + numFollowing);
 
 	});
 </script>
