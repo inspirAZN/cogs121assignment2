@@ -34,5 +34,6 @@ exports.search = function (req, res) {
 
 exports.profile = function(req, res) {
 	
-	res.render('twitProfile', { userProfile: req.user.profile });
+	res.render('twitProfile', { userProfile: req.user.profile,
+								profilepic: req.user.profile.photos });
 }
