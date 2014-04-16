@@ -1,8 +1,12 @@
 {{> header}}
-	
-	<h1> Hello, {{userProfile.displayName}}! You are currently signed in as {{userProfile.username}} on {{userProfile.provider}}! </h1>
+	<div class="container">
+		<div class="row-fluid">
+			<h3> Hello, {{userProfile.displayName}}! You are currently signed in as {{userProfile.username}} on {{userProfile.provider}}! </h3>
+		</div>
+		<div class="row-fluid">
+			<img class="img-responsive img-circle" src="{{userProfile.photos.value}}">
+		</div>
 
-	<br/>
-	{{userProfile._json}}
+	</div>
 
 {{> footer}}
