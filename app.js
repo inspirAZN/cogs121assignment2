@@ -37,9 +37,7 @@ app.get('/', index.view);
 // twitter routes
 app.get('/twit', twit.view);
 app.post('/twit/search', twit.search);
-app.get('/twit/profile', function (req,res) {
-	res.json(req.user.profile);
-})
+app.get('/twit/profile', twit.profile);
 app.get('/authn/twitter', auth.passport.authenticate('twitter'));
 // app.get('/twit/login', twit.login);
 app.get('/authn/twitter/callback', 

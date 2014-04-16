@@ -32,6 +32,7 @@ exports.search = function (req, res) {
 	});
 }
 
-exports.login = function(req, res) {
-
+exports.profile = function(req, res) {
+	
+	res.render('twitProfile', { userProfile: req.user.profile });
 }
