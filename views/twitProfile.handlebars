@@ -195,14 +195,16 @@
 				var tweetObject = [];
 
 				// tweet html formatting for append() call
+				var tweettron_open = "<div class='jumbotron'><div class='container'>";
 				var tweetHTML_open = "<div class='row-fluid'>";
 				var tweetHTML_user_open = "<h3>";
 				var tweetHTML_user_close = "</h3>";
-				var tweetHTML_time_open = "<h3><small> On: ";
-				var tweetHTML_time_close = "</small></h3>";
-				var tweetHTML_tweet_open = "<h3><i>'";
-				var tweetHTML_tweet_close = "'</i></h3>";
+				var tweetHTML_time_open = "<small> On: ";
+				var tweetHTML_time_close = "</small>";
+				var tweetHTML_tweet_open = "<span><i>'";
+				var tweetHTML_tweet_close = "'</i></span>";
 				var tweetHTML_close = "</div>";
+				var tweettron_close = "</div></div>";
 				var completeHTML = '';
 
 				for(var i = 0; i < numTweets; i++) {
@@ -218,31 +220,32 @@
 					// tweetObject.push(tempJSON);
 
 					// build the html to append to the DOM
-					// user section
 					completeHTML += tweetHTML_open;
+					completeHTML += tweettron_open;
+
+					// user section
 					completeHTML += tweetHTML_user_open;
 					completeHTML += tempJSON.author;
 					completeHTML += tweetHTML_user_close;
-					completeHTML += tweetHTML_close;
+
 
 					// time section
-					completeHTML += tweetHTML_open;
 					completeHTML += tweetHTML_time_open;
 					completeHTML += tempJSON.time;
-					completeHTML += tweetHTML_user_close;
-					completeHTML += tweetHTML_close;
+					completeHTML += tweetHTML_time_close;
 
 					// tweet section
-					completeHTML += tweetHTML_open;
-					completeHTML += tweetHTML_time_open;
+					completeHTML += tweetHTML_tweet_open;
 					completeHTML += tempJSON.tweet;
-					completeHTML += tweetHTML_time_close;
+					completeHTML += tweetHTML_tweet_close;
+
+					completeHTML += tweettron_close;
 					completeHTML += tweetHTML_close;
 
 
 					$('#tweets-container').append(completeHTML);
 
-					// reset html
+					// reset html for next iteration
 					completeHTML = '';
 				}
 
