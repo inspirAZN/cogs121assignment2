@@ -201,7 +201,7 @@
 				var tweetHTML_time_open = "<h3><small> On: ";
 				var tweetHTML_time_close = "</small></h3>";
 				var tweetHTML_tweet_open = "<h3><i>'";
-				var tweetHTML_tweet_close = "</i></h3>'";
+				var tweetHTML_tweet_close = "'</i></h3>";
 				var tweetHTML_close = "</div>";
 				var completeHTML = '';
 
@@ -226,14 +226,14 @@
 					completeHTML += tweetHTML_close;
 
 					// time section
-					completeHTML = tweetHTML_open;
+					completeHTML += tweetHTML_open;
 					completeHTML += tweetHTML_time_open;
 					completeHTML += tempJSON.time;
 					completeHTML += tweetHTML_user_close;
 					completeHTML += tweetHTML_close;
 
 					// tweet section
-					completeHTML = tweetHTML_open;
+					completeHTML += tweetHTML_open;
 					completeHTML += tweetHTML_time_open;
 					completeHTML += tempJSON.tweet;
 					completeHTML += tweetHTML_time_close;
