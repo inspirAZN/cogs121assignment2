@@ -18,6 +18,6 @@ exports.profile = function (req, res) {
 		console.log(res);
 		res.render('fbgraphProfile', {
 			userProfile: req.user.profile
-		})
+		});
 	})
 }
