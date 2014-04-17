@@ -8,16 +8,14 @@ exports.profile = function (req, res) {
 	var query = '/';
 		query += req.user.profile.username;
 		query += '/picture';
-	
-	var options = {
-	    timeout:  3000
-	  , pool:     { maxSockets:  Infinity }
-	  , headers:  { connection:  "keep-alive" }
-	};
 
-	auth.graph
-		.setOptions(options)
-		.get(query, function(err, json) {
+	var queryMe = '/me';
+	var meJSON = {};
+
+	auth.graph.get(queryMe, function(err, json) {
+		meJSON = json;
+	});
+	auth.graph.get(query, function(err, json) {
 		res.render('fbgraphProfile', {
 			userProfile: req.user.profile,
 			profPic: json.location

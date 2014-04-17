@@ -44,6 +44,7 @@ app.get('/fbgraph/json', function(req, res) {
 });
 
 // facebook authentication
+// main login
 app.get('/authn/facebook', auth.passport.authenticate('facebook'));
 app.get('/authn/facebook/callback', 
   auth.passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
