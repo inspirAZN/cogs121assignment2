@@ -25,13 +25,7 @@ passport.use(new FacebookStrategy({
     user.refreshToken = refreshToken;
     user.profile = profile;
 
-    // extending static access token
-    graph.extendAccessToken({
-        "client_id":      process.env.fb_id
-      , "client_secret":  process.env.fb_secret
-    }, function (err, facebookRes) {
-       console.log(facebookRes);
-    });
+    graph.setAccessToken(user.token);
 
     done(null, user);
   }
