@@ -171,7 +171,7 @@
 
 			function displayTweets( tweetsJSON ) {
 				var numTweets = tweetsJSON.tweet.length;
-				var tweetObject = {};
+				var tweetObject = [];
 
 				for(var i = 0; i < numTweets; i++) {
 					tweetObject.author = tweetsJSON.tweet[i].username;
