@@ -5,12 +5,18 @@ exports.view = function (req, res) {
 }
 
 exports.profile = function (req, res) {
-	var query = '/'
+	var query = '/';
 		query += req.user.profile.username;
-		query += '/picture'
-	res.render('fbgraphProfile', {
-		userProfile: req.user.profile
+		query += '/picture';
+	auth.graph.get(query, function(err, json) {
+		res.render('fbgraphProfile', {
+			userProfile: req.user.profile
+			profPic: json.location
+		});
 	});
+	// res.render('fbgraphProfile', {
+	// 	userProfile: req.user.profile
+	// });
 }
 
 exports.graphAPI = function (req, res) {
