@@ -15,10 +15,12 @@ exports.profile = function (req, res) {
 	auth.graph.get(queryMe, function(err, json) {
 		meJSON = json;
 	});
+
 	auth.graph.get(query, function(err, json) {
 		res.render('fbgraphProfile', {
 			userProfile: req.user.profile,
-			profPic: json.location
+			profPic: json.location,
+			me: meJSON
 		});
 	});
 	// res.render('fbgraphProfile', {
