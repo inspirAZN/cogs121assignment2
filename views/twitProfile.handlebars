@@ -203,7 +203,7 @@
 
 					// build the html to append to the DOM
 					// user section
-					completeHTML = tweetHTML_open;
+					completeHTML += tweetHTML_open;
 					completeHTML += tweetHTML_user_open;
 					completeHTML += tempJSON.author;
 					completeHTML += tweetHTML_user_close;
@@ -224,7 +224,7 @@
 					completeHTML += tweetHTML_close;
 
 
-					$('#tweets-container').append(tweet));
+					$('#tweets-container').append(completeHTML);
 
 					// reset html
 					completeHTML = '';
