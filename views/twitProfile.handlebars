@@ -121,9 +121,19 @@
 			// convert the string into an array of words from the status
 			var array = statusString.split(' ');
 
+
 			var arrayFloor = array.length-1;
 			// generate a random number between 0 and the size of the array
 			var randInt = Math.floor((Math.random()*arrayFloor)+1);
+
+			// do not search for urls/ allow slashes to be searched for
+			if ( array[randInt].indexOf('/') != -1 ) {
+				if ( array[randInt--] != null) {
+					--randInt;
+				} else {
+					randInt = 0;
+				}
+			}
 
 			console.log(statusString);
 			console.log(randInt);
