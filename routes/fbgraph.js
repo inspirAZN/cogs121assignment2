@@ -20,6 +20,7 @@ exports.profile = function (req, res) {
 }
 
 exports.graphAPI = function (req, res) {
+	auth.graph.setAccessToken(access_token);
 	auth.graph.get("/joseph.caluza/photos", function(err, json) {
 		res.json(json);
 	});
