@@ -40,8 +40,8 @@ app.get('/fbgraph', fbgraph.view);
 app.get('/fbgraph/profile', fbgraph.profile);
 
 // facebook authentication
-app.get('/auth/facebook', auth.passport.authenticate('facebook'));
-app.get('/auth/facebook/callback', 
+app.get('/authn/facebook', auth.passport.authenticate('facebook'));
+app.get('/authn/facebook/callback', 
   auth.passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
                                       failureRedirect: '/failue' }));
 
