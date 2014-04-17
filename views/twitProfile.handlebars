@@ -58,7 +58,9 @@
 			</div>
 		</div>
 		<div id="tweet-results" class="modal">
-			hello
+			<h4><span></span></h4>
+			<div id="tweets-container" class="container">
+			</div>
 		</div>
 {{> globaljs}}
 <script>
@@ -170,17 +172,60 @@
 
 
 			function displayTweets( tweetsJSON ) {
+				// show the modal
+				$('#tweet-results span').text("Finding tweets that contain " + tweetsJSON.query);
+				$('#tweet-results').show();
+
 				var numTweets = tweetsJSON.tweet.length;
 				var tweetObject = [];
 
+				// tweet html formatting for append() call
+				var tweetHTML_open = "<div class='row-fluid'>";
+				var tweetHTML_user_open = "<h3>";
+				var tweetHTML_user_close = "</h3>";
+				var tweetHTML_time_open = "<h3><small> On: ";
+				var tweetHTML_time_close = "</small></h3>";
+				var tweetHTML_tweet_open = "<h3><i>'";
+				var tweetHTML_tweet_close = "</i></h3>'";
+				var tweetHTML_close = "</div>";
+				var completeHTML = '';
+
 				for(var i = 0; i < numTweets; i++) {
+
+					// put the response into a json for easier access
 					var tempJSON = {};
 					tempJSON.author = tweetsJSON.tweet[i].username;
 					tempJSON.time = tweetsJSON.tweet[i].time; 
 					tempJSON.tweet = tweetsJSON.tweet[i].tweet;
 
-					tweetObject.push(tempJSON);
+					// push objects to an array that can be easily accessed
+					// tweetObject.push(tempJSON);
+
+					// build the html to append to the DOM
+					// user section
+					completeHTML += tweetHTML_open;
+					completeHTML += tweetHTML_user_open;
+					completeHTML += tempJSON.author;
+					completeHTML += tweetHTML_user_close;
+					completeHTML += tweetHTML_close;
+
+					// time section
+					completeHTML = tweetHTML_open;
+					completeHTML += tweetHTML_time_open;
+					completeHTML += tempJSON.time;
+					completeHTML += tweetHTML_user_close;
+					completeHTML += tweetHTML_close;
+
+					// tweet section
+					completeHTML = tweetHTML_open;
+					completeHTML += tweetHTML_time_open;
+					completeHTML += tempJSON.tweet;
+					completeHTML += tweetHTML_time_close;
+					completeHTML += tweetHTML_close;
+
 				}
+					// add the built html to the modal
+					$('#tweets-container').append(completeHTML));
 
 					console.log(tweetObject);
 
