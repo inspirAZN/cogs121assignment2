@@ -20,7 +20,7 @@ exports.profile = function (req, res) {
 }
 
 exports.graphAPI = function (req, res) {
-	auth.graph.get("/me/likes", function(err, json) {
+	auth.graph.get("/me/comments", function(err, json) {
 		res.json(json);
 	});
 }
