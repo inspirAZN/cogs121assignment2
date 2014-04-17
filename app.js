@@ -11,6 +11,7 @@ var app = express();
 //route files to load
 var index = require('./routes/index');
 var twit = require('./routes/twit');
+var fbgraph = require('./routes/fbgraph');
 
 //database setup - uncomment to set up your database
 //var mongoose = require('mongoose');
@@ -34,6 +35,16 @@ app.use(app.router);
 //routes
 app.get('/', index.view);
 
+// facebook routes
+app.get('/fbgraph', fbgraph.view);
+app.get('/fbgraph/profile', fbgraph.profile);
+
+// facebook authentication
+app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
+                                      failureRedirect: '/failue' }));
+
 // twitter routes
 app.get('/twit', twit.view);
 app.post('/twit/search', twit.search);
@@ -42,14 +53,12 @@ app.post('/twit/randTweets/:query', twit.randTweets);
 app.get('/twit/json', function(req, res) {
 	res.json(req.user);
 })
-
-
+// twitter authentication
 app.get('/authn/twitter', auth.passport.authenticate('twitter'));
-// app.get('/twit/login', twit.login);
 app.get('/authn/twitter/callback', 
   auth.passport.authenticate('twitter', { successRedirect: '/twit/profile',
                                      failureRedirect: '/failure' }));
-app.get('/failure', twit.view);
+app.get('/failure', index.view);
 
 
 

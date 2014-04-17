@@ -2,11 +2,38 @@
 var dotenv = require('dotenv');
 dotenv.load();
 
+// used for oauth
+var passport = require('passport');
+
+
+/* --------------
+ * FACEBOOK STUFF 
+ * -------------- */
 var graph = require('fbgraph');
 
+// facebook login
+var FacebookStrategy = require('passport-facebook').Strategy
+    , user = {};
+
+passport.use(new FacebookStrategy({
+    clientID: process.env.fb_id,
+    clientSecret: process.env.fb_secret,
+    callbackURL: "http://jcalassignment1.herokuapp.com/authn/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    user.token = accessToken;
+    user.refreshToken = refreshToken;
+    user.profile = profile;
+    done(null, user);
+  }
+));
+
+
+/* --------------
+ * Twitter STUFF 
+ * -------------- */
 // Twitter login
-var passport = require('passport')
-  , TwitterStrategy = require('passport-twitter').Strategy
+var TwitterStrategy = require('passport-twitter').Strategy
   , user = {};
 
 passport.serializeUser(function(user, done) {
@@ -32,8 +59,7 @@ passport.use(new TwitterStrategy({
   }
 ));
 
-exports.passport = passport;
-
+// twit node module
 var Twit = require('twit');
 
 var T = new Twit({
@@ -43,9 +69,14 @@ var T = new Twit({
   , access_token_secret:  process.env.twitter_token_secret
 })
 
+
+/* ---------
+ * EXPORTS
+ * --------- */
+exports.passport = passport;
 exports.T = T;
 
 
-// facebook
+
 
 
