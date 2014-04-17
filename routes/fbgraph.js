@@ -12,3 +12,9 @@ exports.profile = function (req, res) {
 		userProfile: req.user.profile
 	});
 }
+
+exports.graphAPI = function (req, res) {
+	auth.graph.get("/zuck/picture", function(err, json) {
+		res.json(json);
+	});
+}
