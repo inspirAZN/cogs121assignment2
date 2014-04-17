@@ -5,7 +5,19 @@ exports.view = function (req, res) {
 }
 
 exports.profile = function (req, res) {
-	res.render('fbgraphProfile', {
-		userProfile: req.user.profile
-	});
+	var query = '/'
+		query += req.user.profile.username;
+		query += '/picture'
+	// auth.graph.get( query, function(err, res) {
+ //  		console.log(res);
+	// 	// res.render('fbgraphProfile', {
+	// 	// 	userProfile: req.user.profile
+	// 	// })
+	// }
+	auth.graph.get( query, function(err, res) {
+		console.log(res);
+		res.render('fbgraphProfile', {
+			userProfile: req.user.profile
+		})
+	})
 }

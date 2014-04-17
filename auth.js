@@ -75,6 +75,7 @@ var T = new Twit({
  * --------- */
 exports.passport = passport;
 exports.T = T;
+exports.graph = graph;
 
 
 
