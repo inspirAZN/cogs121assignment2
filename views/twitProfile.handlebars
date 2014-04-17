@@ -57,6 +57,9 @@
 				</div>
 			</div>
 		</div>
+		<div id="tweet-results" class="modal">
+			hello
+		</div>
 {{> globaljs}}
 <script>
 	$(document).ready( function (){
@@ -168,7 +171,16 @@
 
 			function displayTweets( tweetsJSON ) {
 				var numTweets = tweetsJSON.tweet.length;
-				console.log(numTweets);
+				var tweetObject = {};
+
+				for(var i = 0; i < numTweets; i++) {
+					tweetObject.author = tweetsJSON.tweet[i].username;
+					tweetObject.time = tweetsJSON.tweet[i].time; 
+					tweetObject.tweet = tweetsJSON.tweet[i].tweet;
+
+					console.log(tweetObject);
+
+				}
 			} 
 
 
