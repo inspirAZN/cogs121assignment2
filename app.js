@@ -40,9 +40,9 @@ app.get('/fbgraph', fbgraph.view);
 app.get('/fbgraph/profile', fbgraph.profile);
 
 // facebook authentication
-app.get('/auth/facebook', passport.authenticate('facebook'));
+app.get('/auth/facebook', auth.passport.authenticate('facebook'));
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
+  auth.passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
                                       failureRedirect: '/failue' }));
 
 // twitter routes
