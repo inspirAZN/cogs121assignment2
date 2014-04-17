@@ -48,7 +48,8 @@
 									<input id="coolSearch" type="hidden"> -->
 									<form>
 										<input name="randQuery" id="randQuery" type="hidden">
-										<button class="btn btn-primary" id="randTwitSearch" href="#" value="Click here to do something cool with this status"> 
+										<button class="btn btn-primary" id="randTwitSearch" href="#">
+										Click here to do something cool with this status </button> 
 									</form>
 								<!-- </form> -->
 							</div>
@@ -57,11 +58,25 @@
 				</div>
 			</div>
 		</div>
-		<div id="tweet-results" class="modal">
-			<h4><span></span></h4>
-			<div id="tweets-container" class="container">
-			</div>
-		</div>
+
+		<div id="tweet-results" class="modal fade">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 id="queryTitle" class="modal-title"></h4>
+		      </div>
+		      <div class="modal-body">
+		        <div id="tweets-container">
+		        	<!-- tweets will display here -->
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 {{> globaljs}}
 <script>
 	$(document).ready( function (){
@@ -173,8 +188,8 @@
 
 			function displayTweets( tweetsJSON ) {
 				// show the modal
-				$('#tweet-results span').text("Finding tweets that contain " + tweetsJSON.query);
-				$('#tweet-results').show();
+				$('#queryTitle').text("Showing the last 10 tweets that contain '" + tweetsJSON.query + "'");
+				$('#tweet-results').modal('show')
 
 				var numTweets = tweetsJSON.tweet.length;
 				var tweetObject = [];
