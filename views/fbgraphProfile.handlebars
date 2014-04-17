@@ -9,10 +9,11 @@
 					<h4>{{userProfile.displayName}} 
 						<small>aka {{userProfile.username}}</small>
 					</h4>
-					<a href="/twit/json">User JSON</a>
+					<a href="/fbgraph/json">User JSON</a>
 				</header>
 				<div class="panel-body">
 					<div class="col-lg-12">
+						{{userProfile._json.bio}}
 					</div>
 				</div>
 			</div>
