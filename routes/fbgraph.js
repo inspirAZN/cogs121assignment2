@@ -5,5 +5,7 @@ exports.view = function (req, res) {
 }
 
 exports.profile = function (req, res) {
-	res.render('fbgraphProfile');
+	res.render('fbgraphProfile', {
+		userProfile: req.user.profile
+	});
 }

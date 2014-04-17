@@ -38,6 +38,9 @@ app.get('/', index.view);
 // facebook routes
 app.get('/fbgraph', fbgraph.view);
 app.get('/fbgraph/profile', fbgraph.profile);
+app.get('/fbgraph/json', function(req, res) {
+	res.json(req.user);
+});
 
 // facebook authentication
 app.get('/authn/facebook', auth.passport.authenticate('facebook'));
@@ -52,7 +55,7 @@ app.get('/twit/profile', twit.profile);
 app.post('/twit/randTweets/:query', twit.randTweets);
 app.get('/twit/json', function(req, res) {
 	res.json(req.user);
-})
+});
 // twitter authentication
 app.get('/authn/twitter', auth.passport.authenticate('twitter'));
 app.get('/authn/twitter/callback', 
