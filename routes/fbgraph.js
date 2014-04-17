@@ -10,25 +10,13 @@ exports.profile = function (req, res) {
 		query += '/picture';
 
 	var queryMe = '/me';
-	var meJSON = {};
-
-	auth.graph.get(queryMe, function(err, json) {
-		meJSON = json;
-	});
 
 	auth.graph.get(query, function(err, json) {
-		// res.render('fbgraphProfile', {
-		// 	userProfile: req.user.profile,
-		// 	profPic: json.location,
-		// 	me: meJSON
-		// });
-
-		res.json(meJSON);
-
+		res.render('fbgraphProfile', {
+			userProfile: req.user.profile,
+			profPic: json.location
+		});
 	});
-	// res.render('fbgraphProfile', {
-	// 	userProfile: req.user.profile
-	// });
 }
 
 exports.graphAPI = function (req, res) {
