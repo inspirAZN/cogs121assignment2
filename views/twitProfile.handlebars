@@ -174,13 +174,16 @@
 				var tweetObject = [];
 
 				for(var i = 0; i < numTweets; i++) {
-					tweetObject.author = tweetsJSON.tweet[i].username;
-					tweetObject.time = tweetsJSON.tweet[i].time; 
-					tweetObject.tweet = tweetsJSON.tweet[i].tweet;
+					var tempJSON = {}
+					tempJSON.author = tweetsJSON.tweet[i].username;
+					tempJSON.time = tweetsJSON.tweet[i].time; 
+					tempJSON.tweet = tweetsJSON.tweet[i].tweet;
+
+					tweetObject.push(tempJSON);
+				}
 
 					console.log(tweetObject);
-
-				}
+				
 			} 
 
 
