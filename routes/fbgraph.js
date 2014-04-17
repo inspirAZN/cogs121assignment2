@@ -10,7 +10,7 @@ exports.profile = function (req, res) {
 		query += '/picture';
 	auth.graph.get(query, function(err, json) {
 		res.render('fbgraphProfile', {
-			userProfile: req.user.profile
+			userProfile: req.user.profile,
 			profPic: json.location
 		});
 	});
