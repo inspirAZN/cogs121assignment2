@@ -8,7 +8,16 @@ exports.profile = function (req, res) {
 	var query = '/';
 		query += req.user.profile.username;
 		query += '/picture';
-	auth.graph.get(query, function(err, json) {
+	
+	var options = {
+	    timeout:  3000
+	  , pool:     { maxSockets:  Infinity }
+	  , headers:  { connection:  "keep-alive" }
+	};
+
+	auth.graph
+		.setOptions(options)
+		.get(query, function(err, json) {
 		res.render('fbgraphProfile', {
 			userProfile: req.user.profile,
 			profPic: json.location
@@ -20,8 +29,7 @@ exports.profile = function (req, res) {
 }
 
 exports.graphAPI = function (req, res) {
-	auth.graph.setAccessToken(access_token);
-	auth.graph.get("/joseph.caluza/photos", function(err, json) {
+	auth.graph.get("/joseph.caluza", function(err, json) {
 		res.json(json);
 	});
 }
