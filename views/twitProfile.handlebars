@@ -203,7 +203,7 @@
 
 					// build the html to append to the DOM
 					// user section
-					completeHTML += tweetHTML_open;
+					completeHTML = tweetHTML_open;
 					completeHTML += tweetHTML_user_open;
 					completeHTML += tempJSON.author;
 					completeHTML += tweetHTML_user_close;
@@ -223,11 +223,14 @@
 					completeHTML += tweetHTML_time_close;
 					completeHTML += tweetHTML_close;
 
-				}
-				// add the built html to the modal
-				$('#tweets-container').append(completeHTML);
 
-				console.log(tweetObject);
+					$('#tweets-container').append(tweet));
+
+					// reset html
+					completeHTML = '';
+				}
+
+					console.log(tweetObject);
 
 			} 
 
