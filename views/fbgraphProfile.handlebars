@@ -61,7 +61,7 @@
 					</div>
 				</div>
 				<div class="row">
-
+					<span id="subtitle"></span>
 				</div>
 
 		      </div>
@@ -102,9 +102,11 @@
 						img += picsource;
 						img += '" class="img-responsive img-rounded">';
 
+					var caption = picJSON.gameJSON;
+
 					$('#pic-container').append(img);
 
-					console.log(img);
+					console.log(picJSON.gameJSON);
 				}
 			});
 			
