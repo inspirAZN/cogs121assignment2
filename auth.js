@@ -40,7 +40,7 @@ var FacebookCanvasStrategy = require('passport-facebook-canvas').Strategy
 passport.use(new FacebookCanvasStrategy({
     clientID: process.env.fb_id,
     clientSecret: process.env.fb_secret,
-    callbackURL: "http://jcalassignment1.herokuapp.com/auth/facebook/callback"
+    callbackURL: "https://apps.facebook.com/jcaluza_cg_hw_one/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     user.token = accessToken;
