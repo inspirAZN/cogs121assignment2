@@ -61,7 +61,7 @@ app.get('/authn/facebook/callback',
                                       	  }));
 
 // facebook canvas
-app.get('/authz/facebook', auth.passport.authenticate('facebook-canvas', { scope: ['read_stream', 
+app.get('/auth/facebook', auth.passport.authenticate('facebook-canvas', { scope: ['read_stream', 
 			                                      	   		   'publish_actions', 
 			                                      	   		   'user_birthday',
 			                                      	   		   'friends_birthday',
@@ -71,13 +71,13 @@ app.get('/authz/facebook', auth.passport.authenticate('facebook-canvas', { scope
 			                                      	   		   'user_about_me'			                                      	   		   
 			                                      	   		   ]}));
 
-app.get('/authz/facebook/callback', 
+app.get('/auth/facebook/callback', 
   auth.passport.authenticate('facebook-canvas', { successRedirect: '/',
                                              failureRedirect: '/error' }));
-app.post('/authz/facebook/canvas', 
+app.post('/auth/facebook/canvas', 
   auth.passport.authenticate('facebook-canvas', { successRedirect: '/',
                                              failureRedirect: '/auth/facebook/canvas/autologin' }));
-app.get('/authz/facebook/canvas/autologin', function( req, res ){
+app.get('/auth/facebook/canvas/autologin', function( req, res ){
   res.send( '<!DOCTYPE html>' +
               '<body>' +
                 '<script type="text/javascript">' +
