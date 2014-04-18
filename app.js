@@ -7,11 +7,11 @@ var path = require('path');
 var handlebars = require('express3-handlebars');
 var app = express();
 
-
 //route files to load
 var index = require('./routes/index');
 var twit = require('./routes/twit');
 var fbgraph = require('./routes/fbgraph');
+var fs = require('fs');
 
 //database setup - uncomment to set up your database
 //var mongoose = require('mongoose');
@@ -60,6 +60,34 @@ app.get('/authn/facebook/callback',
                                       	   failureRedirect: '/failue',
                                       	  }));
 
+// facebook canvas
+app.get('/authz/facebook', auth.passport.authenticate('facebook-canvas', { scope: ['read_stream', 
+			                                      	   		   'publish_actions', 
+			                                      	   		   'user_birthday',
+			                                      	   		   'friends_birthday',
+			                                      	   		   'user_photos',
+			                                      	   		   'friends_photos',
+			                                      	   		   'user_status',
+			                                      	   		   'user_about_me'			                                      	   		   
+			                                      	   		   ]}));
+
+app.get('/authz/facebook/callback', 
+  auth.passport.authenticate('facebook-canvas', { successRedirect: '/',
+                                             failureRedirect: '/error' }));
+app.post('/authz/facebook/canvas', 
+  auth.passport.authenticate('facebook-canvas', { successRedirect: '/',
+                                             failureRedirect: '/auth/facebook/canvas/autologin' }));
+app.get('/authz/facebook/canvas/autologin', function( req, res ){
+  res.send( '<!DOCTYPE html>' +
+              '<body>' +
+                '<script type="text/javascript">' +
+                  'top.location.href = "/auth/facebook";' +
+                '</script>' +
+              '</body>' +
+            '</html>' );
+});
+
+
 // twitter routes
 app.get('/twit', twit.view);
 app.post('/twit/search', twit.search);
@@ -75,6 +103,11 @@ app.get('/authn/twitter/callback',
                                      failureRedirect: '/failure' }));
 app.get('/failure', index.view);
 
+
+var certificate = {
+  key: fs.readFileSync(path.resolve(__dirname, './self_signed_ssl.key'), 'utf8'),
+  cert: fs.readFileSync(path.resolve(__dirname, './self_signed_ssl.crt'), 'utf8')
+}
 
 
 //set environment ports and start application

@@ -31,6 +31,27 @@ passport.use(new FacebookStrategy({
   }
 ));
 
+/* -------------
+ *  CANVAS
+ * ------------- */
+
+var FacebookCanvasStrategy = require('passport-facebook-canvas');
+
+passport.use(new FacebookCanvasStrategy({
+    clientID: process.env.fb_id,
+    clientSecret: process.env.fb_secret,
+    callbackURL: "https://apps.facebook.com/jcaluza_cg_hw_one/authz/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    user.token = accessToken;
+    user.refreshToken = refreshToken;
+    user.profile = profile;
+
+    graph.setAccessToken(user.token);
+
+    done(null, user);
+  }
+));
 
 /* --------------
  * Twitter STUFF 

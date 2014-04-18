@@ -15,9 +15,10 @@
     "passport-twitter": "*",
     "fbgraph": "*",
     "twit": "*",
-    "dotenv": "*"
+    "dotenv": "*",
+    "passport-facebook-canvas": "0.0.3"
   },
   "engines": {
     "node": "0.10.x"
-  }  
+  }
 }
