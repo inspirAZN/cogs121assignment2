@@ -121,12 +121,7 @@
 				e.preventDefault();
 
 				var picsource = $(this).attr('href');
-				var img = '<img id="dapic" src="';
-					img += picsource;
-					img += '" class="img-responsive img-rounded">';
-
-				$('#pic-container').append(img);
-
+				window.open(picsource);
 			});
 			
 
