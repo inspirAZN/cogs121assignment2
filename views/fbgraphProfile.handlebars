@@ -72,6 +72,15 @@
 				<div class="row">
 					<span id="subtitle"></span>
 				</div>
+				<br/>
+				<div class="row">
+					<div class="input-group">
+				      <input id="guess" type="text" class="form-control">
+				      <span class="input-group-btn">
+				        <button id="getGuess" class="btn btn-primary" type="button">Submit</button>
+				      </span>
+				    </div><!-- /input-group -->
+				</div>
 
 		      </div>
 		      <div class="modal-footer">
@@ -83,8 +92,10 @@
 {{> globaljs}}
 	<script type="text/javascript">
 		$(document).ready( function () {
+			var solution = '';
 
 			$('#randPicBtn').click(function (e) {
+
 				e.preventDefault();
 
 				$('#picResult').modal('show');
@@ -107,6 +118,12 @@
 					var picsource = '';
 						picsource += picJSON.gameJSON.pic;
 
+						solution += picJSON.gameJSON.solution;
+						solution = solution.toLowerCase();
+
+					var solutionArray = solution.split(' ');
+						console.log(solutionArray);
+
 					var img = '<img id="dapic" src="';
 						img += picsource;
 						img += '" class="img-responsive img-rounded">';
@@ -118,7 +135,7 @@
 					$('#subtitle').text(caption);
 					$('#error').attr('href', picsource);
 
-					console.log(picJSON.gameJSON);
+					console.log(picJSON.gameJSON.solution);
 				}
 			});
 
@@ -130,6 +147,11 @@
 				window.open(picsource);
 			});
 			
+			$('#getGuess').click(function (e) {
+				// get the guess from input
+				var guess = $('#guess').val().toLowerCase();
+				console.log(guess);
+			})
 
 
 		});
