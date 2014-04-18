@@ -33,7 +33,7 @@
 							<br/>
 							<form>
 								<input name="randPic" id="randPic" type="hidden">
-								<button class="btn btn-primary" id="randPic" href="#">
+								<button class="btn btn-primary" id="randPicBtn" href="#">
 									I accept your challenge!
 								</button>
 							</form>
@@ -75,27 +75,32 @@
 	<script type="text/javascript">
 		$(document).ready( function () {
 
-			// get a picture
-			$.ajax({
-				type: 'GET',
-				url: '/fbgraph/randPic',
-				dataType: 'json'
-			}).done( function(response) {
-				if (response.msg === '') {
-					displayPic( response );
-				} else {
-					alert(response.msg);
+			$('#randPicBtn').click(function (e) {
+				e.preventDefault();
+
+				// get a picture
+				$.ajax({
+					type: 'GET',
+					url: '/fbgraph/randPic',
+					dataType: 'json'
+				}).done( function(response) {
+					if (response.msg === '') {
+						displayPic( response );
+					} else {
+						alert(response.msg);
+					}
+				});
+
+				function displayPic( picJSON ) {
+					// show the modal
+					$('#picResult').modal('show');
+
+					$('#randPic').attr('src', picJSON.pic);
+
+					console.log(picJSON);
 				}
 			});
-
-			function displayPic( picJSON ) {
-				// show the modal
-				$('#picResult').modal('show');
-
-				$('#randPic').attr('src', picJSON.pic);
-
-				console.log(picJSON.pic);
-			}
+			
 
 
 		});
