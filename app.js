@@ -45,17 +45,16 @@ app.get('/fbgraph/json', function(req, res) {
 
 // facebook authentication
 // main login
-app.get('/authn/facebook', auth.passport.authenticate('facebook'));
+app.get('/authn/facebook', auth.passport.authenticate('facebook' { scope: ['read_stream', 
+			                                      	   		   'publish_actions', 
+			                                      	   		   'user_birthday',
+			                                      	   		   'friends_birthday',
+			                                      	   		   'user_photos',
+			                                      	   		   'friends_photos',
+			                                      	   		   'user_status'
+			                                      	   		   ]}));
 app.get('/authn/facebook/callback', 
-  auth.passport.authenticate('facebook', { scope: ['read_stream', 
-                                      	   		   'publish_actions', 
-                                      	   		   'user_birthday',
-                                      	   		   'friends_birthday',
-                                      	   		   'user_photos',
-                                      	   		   'friends_photos',
-                                      	   		   'user_status'
-                                      	   		   ],
-  										   successRedirect: '/fbgraph/profile',
+  auth.passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
                                       	   failureRedirect: '/failue',
                                       	  }));
 
