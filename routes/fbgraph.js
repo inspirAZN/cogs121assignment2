@@ -32,6 +32,7 @@ exports.getPic = function (req, res) {
 	var commentsLength;
 	var min = 0;
 	var max;
+	var msg = '';
 
 	auth.graph.get("/me/photos", function(err, reply) {
 		// get the length of the array
@@ -46,7 +47,13 @@ exports.getPic = function (req, res) {
 		temp.solution = photoInformation.from.name;
 		temp.subtitle = photoInformation.name;
 
-		res.send(temp);
+		if(err) {
+			msg = 'Sorry, there was an error. Try again.';
+		}
+		res.send({
+			gameJSON: temp,
+			msg: msg;
+		});
 	});
 
 	// now have one photo from the array
