@@ -52,14 +52,18 @@
 		      </div>
 		      <div class="modal-body">
 		      	<div class="row">
-			      	</i><span id="comment"></span></i>
+			      	</i><span>
+			      		<a id="error" href="">If you don't see a picture, click here </a>
+			      	</span></i>
 			    </div>
 			    <div class="row">
 			        <div id="pic-container">
 			        	<!-- pic will display here -->
 			        	<img src="" class="img-responsive img-rounded">
+
 					</div>
 				</div>
+				<br/>
 				<div class="row">
 					<span id="subtitle"></span>
 				</div>
@@ -106,6 +110,7 @@
 
 					$('#pic-container').append(img);
 					$('#subtitle').text(caption);
+					$('#error').attr('href', picsource);
 
 					console.log(picJSON.gameJSON);
 				}
