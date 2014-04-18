@@ -39,7 +39,7 @@ exports.getPic = function (req, res) {
 		max = photoArrayLength - 1;
 		var randomInt = getRandomInt(min, max);
 		photoInformation = reply;
-		res.json(reply);
+		res.json(reply.data);
 	});
 
 	// now have one photo from the array
