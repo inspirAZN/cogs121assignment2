@@ -52,7 +52,7 @@
 		    <div class="modal-content text-center">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 id="Title" class="modal-title">Who posted this?</h4>
+		        <h4 id="Title" class="modal-title">Who posted this? <small><span id="answer"></span></small></h4>
 		      </div>
 		      <div class="modal-body">
 		      	<div class="row">
@@ -63,7 +63,9 @@
 			    <div class="row">
 			        <div id="pic-container">
 			        	<!-- pic will display here -->
-			        	<span id="load">Loading...</span>
+			        	<br/>
+			        	<h2><span id="success" class="green"></span></h2>
+			        	<span id="load">Loading... <br/> Please wait a moment.</span>
 			        	<img src="" class="img-responsive img-rounded">
 
 					</div>
@@ -79,6 +81,7 @@
 				      <span class="input-group-btn">
 				        <button id="getGuess" class="btn btn-primary" type="button">Submit</button>
 				      </span>
+				      <span id="incorrect" class="help-block red"></span>
 				    </div><!-- /input-group -->
 				</div>
 
@@ -92,7 +95,9 @@
 {{> globaljs}}
 	<script type="text/javascript">
 		$(document).ready( function () {
+			// global variable
 			var solutionArray = [];
+			var	solution = '';
 
 			$('#randPicBtn').click(function (e) {
 
@@ -118,7 +123,6 @@
 					var picsource = '';
 						picsource += picJSON.gameJSON.pic;
 
-					var	solution = '';
 						solution += picJSON.gameJSON.solution;
 						solution = solution.toLowerCase();
 
@@ -154,8 +158,6 @@
 				if (guessArray.length > 1) {
 					for( var i = 0; i < solutionArray.length; i++ ){
 						// check if the user put in one or any of the answer
-						console.log(solutionArray[i]);
-						console.log(guessArray[i]);
 						for (var j = 0; j <= guessArray.length; j++) {
 							if(solutionArray[i] === guessArray[j]) {
 								correct = true;
@@ -174,10 +176,18 @@
 						}
 					}
 				}
-				console.log(correct);
-				console.log(guess);
-				console.log(solutionArray);
-			})
+
+				// if it's correct display correct
+				if(correct) {
+					$('#success').text('Correct! Refresh the page to try another picture.');
+					$('#answer').text(solution);
+				} else {
+					// it's wrong, display wrong
+					$('#incorrect').text('Wrong Answer! Guess again!');
+
+				}
+
+			});
 
 
 		});
