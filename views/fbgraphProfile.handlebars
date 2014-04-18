@@ -81,6 +81,7 @@
 				      <span class="input-group-btn">
 				        <button id="getGuess" class="btn btn-primary" type="button">Submit</button>
 				      </span>
+				      <br/>
 				      <span id="incorrect" class="help-block red"></span>
 				    </div><!-- /input-group -->
 				</div>
@@ -181,10 +182,10 @@
 				if(correct) {
 					$('#success').text('Correct! Refresh the page to try another picture.');
 					$('#answer').text(solution);
+					$('#incorrect').text('');
 				} else {
 					// it's wrong, display wrong
-					$('#incorrect').text('Wrong Answer! Guess again!');
-
+					$('#incorrect').text('Wrong Answer! Guess again or refresh try a new picture.');
 				}
 
 			});
