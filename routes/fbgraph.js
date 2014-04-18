@@ -44,8 +44,9 @@ exports.getPic = function (req, res) {
 		photoInformation = reply.data[randomInt];
 		temp.pic = photoInformation.source;
 		temp.solution = photoInformation.from.name;
+		temp.subtitle = photoInformation.name;
 
-		res.json(photoInformation.name);
+		res.json(temp);
 	});
 
 	// now have one photo from the array
