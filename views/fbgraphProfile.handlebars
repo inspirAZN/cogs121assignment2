@@ -148,6 +148,19 @@
 			$('#getGuess').click(function (e) {
 				// get the guess from input
 				var guess = $('#guess').val().toLowerCase();
+				var guessArray = guess.split('');
+				var correct = 'false';
+
+				for( var i = 0; i < solutionArray.length; i++ ){
+					// check if the user put in one or any of the answer
+					console.log(solutionArray[i]);
+					console.log(guessarray[i]);
+					if(solutionArray[i] === guessarray[i]) {
+						correct = true;
+						break;
+					}
+				}
+				console.log(correct);
 				console.log(guess);
 				console.log(solutionArray);
 			})
