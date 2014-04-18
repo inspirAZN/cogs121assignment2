@@ -57,7 +57,7 @@
 			    <div class="row">
 			        <div id="pic-container">
 			        	<!-- pic will display here -->
-			        	<img id="randPic" src="" class="img-responsive img-rounded">
+			        	<img src="" class="img-responsive img-rounded">
 					</div>
 				</div>
 				<div class="row">
@@ -97,10 +97,14 @@
 
 					var picsource = '';
 						picsource += picJSON.gameJSON.pic;
-						
-					$('#randPic').attr('src', picsource);
 
-					console.log(picJSON.gameJSON.pic);
+					var img = '<img src="';
+						img += picsource;
+						img += '" class="img-responsive img-rounded">';
+
+					$('#pic-container').append(img);
+
+					console.log(img);
 				}
 			});
 			
