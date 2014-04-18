@@ -45,7 +45,7 @@ app.get('/fbgraph/json', function(req, res) {
 
 // facebook authentication
 // main login
-app.get('/authn/facebook', auth.passport.authenticate('facebook' { scope: ['read_stream', 
+app.get('/authn/facebook', auth.passport.authenticate('facebook', { scope: ['read_stream', 
 			                                      	   		   'publish_actions', 
 			                                      	   		   'user_birthday',
 			                                      	   		   'friends_birthday',
