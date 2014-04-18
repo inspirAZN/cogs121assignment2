@@ -51,7 +51,8 @@ app.get('/authn/facebook', auth.passport.authenticate('facebook', { scope: ['rea
 			                                      	   		   'friends_birthday',
 			                                      	   		   'user_photos',
 			                                      	   		   'friends_photos',
-			                                      	   		   'user_status'
+			                                      	   		   'user_status',
+			                                      	   		   'user_about_me'			                                      	   		   
 			                                      	   		   ]}));
 app.get('/authn/facebook/callback', 
   auth.passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
