@@ -52,7 +52,7 @@ exports.getPic = function (req, res) {
 		}
 		res.send({
 			gameJSON: temp,
-			msg: msg;
+			msg: msg
 		});
 	});
 
