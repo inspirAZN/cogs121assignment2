@@ -74,7 +74,7 @@ app.get('/auth/facebook', auth.passport.authenticate('facebook-canvas', { scope:
 app.get('/auth/facebook/callback', 
   auth.passport.authenticate('facebook-canvas', { successRedirect: '/',
                                              failureRedirect: '/error' }));
-app.get('/auth/facebook/canvas', 
+app.post('/auth/facebook/canvas', 
   auth.passport.authenticate('facebook-canvas', { successRedirect: '/',
                                              failureRedirect: '/auth/facebook/canvas/autologin' }));
 app.get('/auth/facebook/canvas/autologin', function( req, res ){
