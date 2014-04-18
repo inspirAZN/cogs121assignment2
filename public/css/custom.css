@@ -2,3 +2,11 @@
 	height: 250px;
 	width: 250px;
 }
+
+.red {
+	color: #e74c3c !important;
+}
+
+.green {
+	color: #27ae60 !important;
+}
