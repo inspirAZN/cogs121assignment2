@@ -148,7 +148,7 @@
 			$('#getGuess').click(function (e) {
 				// get the guess from input
 				var guess = $('#guess').val().toLowerCase();
-				var guessArray = guess.split('');
+				var guessArray = guess.split(' ');
 				var correct = 'false';
 
 				for( var i = 0; i < solutionArray.length; i++ ){
