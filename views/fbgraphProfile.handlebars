@@ -95,7 +95,10 @@
 					// show the modal
 					$('#picResult').modal('show');
 
-					$('#randPic').attr('src', picJSON.gameJSON.pic);
+					var picsource = '';
+						picsource += picJSON.gameJSON.pic;
+						
+					$('#randPic').attr('src', picsource);
 
 					console.log(picJSON.gameJSON.pic);
 				}
