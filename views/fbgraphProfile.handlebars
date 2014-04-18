@@ -92,7 +92,7 @@
 {{> globaljs}}
 	<script type="text/javascript">
 		$(document).ready( function () {
-			var solution = '';
+			var solutionArray = [];
 
 			$('#randPicBtn').click(function (e) {
 
@@ -118,11 +118,10 @@
 					var picsource = '';
 						picsource += picJSON.gameJSON.pic;
 
-						solution += picJSON.gameJSON.solution;
+					var	solution += picJSON.gameJSON.solution;
 						solution = solution.toLowerCase();
 
-					var solutionArray = solution.split(' ');
-						console.log(solutionArray);
+					solutionArray = solution.split(' ');
 
 					var img = '<img id="dapic" src="';
 						img += picsource;
@@ -134,8 +133,6 @@
 					$('#pic-container').append(img);
 					$('#subtitle').text(caption);
 					$('#error').attr('href', picsource);
-
-					console.log(picJSON.gameJSON.solution);
 				}
 			});
 
@@ -151,6 +148,7 @@
 				// get the guess from input
 				var guess = $('#guess').val().toLowerCase();
 				console.log(guess);
+				console.log(solutionArray);
 			})
 
 
