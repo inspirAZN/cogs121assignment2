@@ -20,7 +20,15 @@ exports.profile = function (req, res) {
 }
 
 exports.graphAPI = function (req, res) {
-	auth.graph.get("/me/photos", function(err, json) {
+	var query = {
+	    name:         "SELECT name FROM user WHERE uid = me()"
+	  , permissions:  "SELECT email, user_about_me, user_birthday FROM permissions WHERE uid = me()"
+	};
+
+	auth.graph.fql(query, function(err, json) {
 		res.json(json);
 	});
+	// auth.graph.fql("/me/photos", function(err, json) {
+	// 	res.json(json);
+	// });
 }
