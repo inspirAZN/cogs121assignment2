@@ -47,16 +47,17 @@ app.get('/fbgraph/json', function(req, res) {
 // main login
 app.get('/authn/facebook', auth.passport.authenticate('facebook'));
 app.get('/authn/facebook/callback', 
-  auth.passport.authenticate('facebook', { successRedirect: '/fbgraph/profile',
-                                      	   failureRedirect: '/failue',
-                                      	   scope: ['read_stream', 
-                                      	   		   'publish_actions' , 
+  auth.passport.authenticate('facebook', { scope: ['read_stream', 
+                                      	   		   'publish_actions', 
                                       	   		   'user_birthday',
                                       	   		   'friends_birthday',
                                       	   		   'user_photos',
                                       	   		   'friends_photos',
                                       	   		   'user_status'
-                                      	   		   ] }));
+                                      	   		   ],
+  										   successRedirect: '/fbgraph/profile',
+                                      	   failureRedirect: '/failue',
+                                      	  }));
 
 // twitter routes
 app.get('/twit', twit.view);
