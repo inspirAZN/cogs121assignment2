@@ -102,7 +102,7 @@
 					var picsource = '';
 						picsource += picJSON.gameJSON.pic;
 
-					var img = '<img src="';
+					var img = '<img id="dapic" src="';
 						img += picsource;
 						img += '" class="img-responsive img-rounded">';
 
@@ -114,6 +114,19 @@
 
 					console.log(picJSON.gameJSON);
 				}
+			});
+
+			$('#error').click(function (e) {
+				// let's hack something that works
+				e.preventDefault();
+
+				var picsource = $(this).attr('href');
+				var img = '<img id="dapic" src="';
+					img += picsource;
+					img += '" class="img-responsive img-rounded">';
+
+				$('#pic-container').append(img);
+
 			});
 			
 
