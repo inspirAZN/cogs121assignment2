@@ -102,9 +102,10 @@
 						img += picsource;
 						img += '" class="img-responsive img-rounded">';
 
-					var caption = picJSON.gameJSON;
+					var caption = picJSON.gameJSON.subtitle;
 
 					$('#pic-container').append(img);
+					$('#subtitle').text(captio);
 
 					console.log(picJSON.gameJSON);
 				}
