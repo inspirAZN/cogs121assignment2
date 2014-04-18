@@ -38,7 +38,7 @@ app.get('/', index.view);
 // facebook routes
 app.get('/fbgraph', fbgraph.view);
 app.get('/fbgraph/profile', fbgraph.profile);
-app.post('/fbgraph/randPic', fbgraph.getPic)
+app.get('/fbgraph/randPic', fbgraph.getPic)
 app.get('/fbgraph/testAPI', fbgraph.graphAPI);
 app.get('/fbgraph/json', function(req, res) {
 	res.json(req.user);
