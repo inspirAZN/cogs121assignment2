@@ -27,7 +27,7 @@ function getRandomInt(min, max) {
 exports.getPic = function (req, res) {
 	var photoArrayLength;
 	var photoInformation = [];
-	var temp = [];
+	var temp = {};
 
 	var commentsLength;
 	var min = 0;
