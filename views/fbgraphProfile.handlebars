@@ -26,14 +26,62 @@
 							{{userProfile._json.bio}}
 						</div>
 						<div class="row">
+							<h3> Let's Play a Game! </h3>
+							<span>
+								You will be shown a random photo you are tagged in and an anonymous comment from that picture.  Can you guess who said it?
+							</span>
+							<br/>
+							<b>*WARNING* This can be difficult!</b>
+							<form>
+								<input name="randPic" id="randPic" type="hidden">
+								<!-- <button class="btn btn-primary" id="randPic" href="#">
+									I accept your challenge!
+								</button>  -->
+								<a href="/fbgraph/getPic">GO</a>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- modal collection -->
+		<div id="picResult" class="modal fade">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 id="Title" class="modal-title">Who said...</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="row">
+			      	</i><span id="comment"></span></i>
+			    </div>
+			    <div class="row">
+			        <div id="pic-container">
+			        	<!-- tweets will display here -->
+					</div>
+				</div>
+				<div class="row">
+
+				</div>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 {{> globaljs}}
 	<script type="text/javascript">
-		console.log({{me}});
+		$(document).ready( function () {
+
+			// get a picture
+
+
+
+		}
+		
 	</script>
 
 {{> footer}}

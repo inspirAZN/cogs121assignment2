@@ -19,6 +19,34 @@ exports.profile = function (req, res) {
 	});
 }
 
+// helper function
+function getRandomInt(min, max) {
+  	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+exports.getPic = function (req, res) {
+	var photoArrayLength;
+	var photoInformation = [];
+	var commentsLength;
+	var min = 0;
+	var max;
+
+	auth.graph.get("/me/photos", function(err, reply) {
+		// get the length of the array
+		photoArrayLength = reply.data.length;
+
+		// generate a random number to randomly select a picture
+		max = photoArrayLength - 1;
+		var randomInt = getRandomInt(min, max);
+		photoInformation = reply.data[randomInt];
+	});
+
+	// now have one photo from the array
+	res.json(photoInformation);
+	
+
+}
+
 exports.graphAPI = function (req, res) {
 	auth.graph.get("/me/photos", function(err, json) {
 		res.json(json); 
