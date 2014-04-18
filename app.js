@@ -34,6 +34,9 @@ app.use(app.router);
 
 //routes
 app.get('/', index.view);
+app.post('/', function(req, res) {
+	res.json('YES');
+});
 
 // facebook routes
 app.get('/fbgraph', fbgraph.view);
