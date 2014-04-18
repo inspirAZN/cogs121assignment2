@@ -43,7 +43,7 @@ exports.getPic = function (req, res) {
 		var randomInt = getRandomInt(min, max);
 
 		photoInformation = reply.data[randomInt];
-		temp.pic = photoInformation.images[2].source;
+		temp.pic = photoInformation.source;
 		temp.solution = photoInformation.from.name;
 		temp.subtitle = photoInformation.name;
 
