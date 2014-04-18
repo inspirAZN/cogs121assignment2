@@ -36,7 +36,7 @@ passport.use(new FacebookStrategy({
  * ------------- */
 
 var FacebookCanvasStrategy = require('passport-facebook-canvas');
-
+    user = {};
 passport.use(new FacebookCanvasStrategy({
     clientID: process.env.fb_id,
     clientSecret: process.env.fb_secret,
