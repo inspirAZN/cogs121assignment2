@@ -14,6 +14,7 @@ exports.profile = function (req, res) {
 	auth.graph.get(query, function(err, json) {
 		res.render('fbgraphProfile', {
 			userProfile: req.user.profile,
+			active: true;
 			profPic: json.location
 		});
 	});
