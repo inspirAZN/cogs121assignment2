@@ -77,7 +77,7 @@
 
 			// get a picture
 			$.ajax({
-				type: 'GET',
+				type: 'POST',
 				url: '/fbgraph/randPic',
 				dataType: 'json'
 			}).done( function(response) {
@@ -90,7 +90,7 @@
 			});
 
 			function displayPic( picJSON ) {
-				console.log(picJSON);
+				console.log(picJSON)
 			}
 
 
