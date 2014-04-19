@@ -192,8 +192,12 @@
 
 			// remove the picture when the modal closes
 			$('#picResult').on('hidden.bs.modal', function (e) {
+				// reset everything in the modal
 				$('#dapic').remove();
-			});
+				$('#subtitle').text('');
+				$('#incorrect').text('');
+				$('#answer').text('');
+			});	
 		});
 		
 	</script>
