@@ -1,5 +1,4 @@
-Boilerplate
+Assignment 2: Bookalyzr
 ===========
 
-Boilerplate for COGS 121. This should provide a basic set up for node.js. 
-Make sure you run npm install before using
+Visualizes data from Facebook as a graph implemented using d3 js library.
