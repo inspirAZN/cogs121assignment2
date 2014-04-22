@@ -15,6 +15,14 @@ var graph = require('fbgraph');
 var FacebookStrategy = require('passport-facebook').Strategy
     , user = {};
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 passport.use(new FacebookStrategy({
     clientID: process.env.fb_id,
     clientSecret: process.env.fb_secret,
