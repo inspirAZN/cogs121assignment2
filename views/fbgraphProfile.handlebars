@@ -47,7 +47,7 @@
 				</div>
 			</div>
 		</div>
-
+		<a href="/fbgraph/friends"> click </a>
 		<div class="row-fluid">
 			<!-- <a href="/fbgraph/friends">view friends</a> -->
 			<div id="myGraph">
@@ -106,15 +106,15 @@
 
 <script>
 // make an ajax request to get friend connections/data
-	$.ajax({
-			type: 'GET',
-			url: '/fbgraph/friends',
-			dataType: 'json'
-		}).done( function(response) {
-			// collect the response and start d3 implementation
-			console.log('here');
-			console.log(response.data);
-		});
+	// $.ajax({
+	// 		type: 'GET',
+	// 		url: '/fbgraph/friends',
+	// 		dataType: 'json'
+	// 	}).done( function(response) {
+	// 		// collect the response and start d3 implementation
+	// 		console.log('here');
+	// 		console.log(response.data);
+	// 	});
 
 </script>
 

@@ -104,5 +104,5 @@ exports.getFriends = function(req, res) {
 		});
 	});
 
-	res.send(friendGraph);
+	res.json(friendGraph);
 }
