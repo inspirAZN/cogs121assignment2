@@ -1,4 +1,4 @@
-<script type="text/javascript">
+
 		$(document).ready( function () {
 			// global variable
 			var solutionArray = [];
@@ -104,4 +104,3 @@
 			});	
 		});
 		
-	</script>
