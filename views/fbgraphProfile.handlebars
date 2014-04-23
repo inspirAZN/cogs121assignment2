@@ -141,6 +141,29 @@ var friendGraph = {};
 		console.log(friendGraph);
 	});
 
+	// get mutual friends
+	$.ajax({
+		type: 'GET',
+			url: '/fbgraph/mutualfriends',
+			dataType: 'json'
+		}).done( function(response) {
+			console.log('getting mutual friends');
+
+			friendGraph.edges = json.data.map(function(link) {
+				return {
+					source: friend_id.indexOf(link.uid1),
+					target: friend_id.indexOf(link.uid2)
+				}
+			console.log('this was the mutual friend response');
+			console.log(response);
+			});
+		});
+	});
+	
+	console.log('this is the final friend graph');
+	console.log(friendGraph);
+	
+
 </script>
 
 {{> footer}}

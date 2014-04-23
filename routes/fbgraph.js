@@ -68,27 +68,23 @@ exports.graphAPI = function (req, res) {
 	});
 }
 
-exports.getFriends = function(req, res) {
-	// build/ format json for d3 implementation
-	var friendGraph = {};
-	
-	var query = "SELECT uid1, uid2 FROM friend WHERE uid1 in (SELECT uid2 FROM friend WHERE uid1=me())";
-		query += " AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())";
-	
+exports.getFriends = function(req, res) {	
 	// get friends and reduce
 	auth.graph.get("/me/friends", function(err, json) {
 		res.send(json);
 	});
 
-	// map mutual friends
-	// auth.graph.fql(query, function(err, json) {
-	// 	friendGraph.edges = json.data.map(function(link) {
-	// 		return {
-	// 			source: friend_id.indexOf(link.uid1),
-	// 			target: friend_id.indexOf(link.uid2)
-	// 		}
-	// 	});
-	// });
+	
+}
 
-	// res.json(friendGraph);
+exports.getMutualFriends = function(req, res) {
+	var query = "SELECT uid1, uid2 FROM friend WHERE uid1 in (SELECT uid2 FROM friend WHERE uid1=me())";
+		query += " AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())";
+
+	// map mutual friends
+	auth.graph.fql(query, function(err, json) {
+		res.send(json);
+	});
+
+
 }
