@@ -132,36 +132,34 @@ var friendGraph = {};
 					name: friends[friend_id]
 				}
 			});
-		console.log("the response was");
 
-		console.log(response);
+			// get mutual friends
+		$.ajax({
+			type: 'GET',
+				url: '/fbgraph/mutualfriends',
+				dataType: 'json'
+			}).done( function(response) {
+				console.log('getting mutual friends');
 
-		console.log("the friend graph is now");
-
-		console.log(friendGraph);
-	});
-
-	// get mutual friends
-	$.ajax({
-		type: 'GET',
-			url: '/fbgraph/mutualfriends',
-			dataType: 'json'
-		}).done( function(response) {
-			console.log('getting mutual friends');
-
-			friendGraph.edges = response.data.map(function(link) {
-				return {
-					source: friend_id.indexOf(link.uid1),
-					target: friend_id.indexOf(link.uid2)
-				}
-			console.log('this was the mutual friend response');
-			console.log(response);
+				friendGraph.edges = response.data.map(function(link) {
+					return {
+						source: friend_id.indexOf(link.uid1),
+						target: friend_id.indexOf(link.uid2)
+					}
+				console.log('this was the mutual friend response');
+				console.log(response);
+				});
+				console.log('this is the final friend graph');
+				console.log(friendGraph);
 			});
-			console.log('this is the final friend graph');
+			console.log("the mutual friend response was");
+
+			console.log(response);
+
+			console.log("the friend graph is now");
+
 			console.log(friendGraph);
 		});
-	
-	
 
 </script>
 
