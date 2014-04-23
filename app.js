@@ -46,6 +46,7 @@ app.get('/fbgraph/testAPI', fbgraph.graphAPI);
 app.get('/fbgraph/json', function(req, res) {
 	res.json(req.user);
 });
+app.get('/fbgraph/friends', fbgraph.getFriends);
 
 // facebook authentication
 // main login

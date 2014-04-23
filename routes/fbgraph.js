@@ -67,3 +67,9 @@ exports.graphAPI = function (req, res) {
 		res.json(json); 
 	});
 }
+
+exports.getFriends = function(req, res) {
+	auth.graph.get("/me/friends", function(err, json) {
+		res.json(json);
+	})
+}
