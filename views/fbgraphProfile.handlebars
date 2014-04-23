@@ -106,7 +106,9 @@
 
 <script>
 // make an ajax request to get friend connections/data
+var data = [ '<img class="img-responsive" src="http://i.stack.imgur.com/qdR8p.png">'];
 // make 
+d3.select('#myGraph').data(data).enter().append("img").text(function (d) {return d;});
 
 </script>
 
