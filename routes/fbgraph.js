@@ -69,7 +69,11 @@ exports.graphAPI = function (req, res) {
 }
 
 exports.getFriends = function(req, res) {
-	auth.graph.get("/me/friends", function(err, json) {
+	var responseJSON = {};
+	var query = "SELECT uid1, uid2 FROM friend WHERE uid1 in (SELECT uid2 FROM friend WHERE uid1=me())";
+		query += " AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())";
+
+	auth.graph.fql(query, function(err, json) {
 		res.json(json);
 	})
 }
