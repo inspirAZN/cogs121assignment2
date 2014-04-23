@@ -106,6 +106,14 @@
 
 <script>
 // make an ajax request to get friend connections/data
+	$.ajax({
+			type: 'GET',
+			url: '/fbgraph/friends',
+			dataType: 'json'
+		}).done( function(response) {
+			// collect the response and start d3 implementation
+			console.log(response);
+		});
 
 </script>
 

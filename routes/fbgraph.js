@@ -69,13 +69,40 @@ exports.graphAPI = function (req, res) {
 }
 
 exports.getFriends = function(req, res) {
-	// var friendGraph = {};
+	// build/ format json for d3 implementation
+	var friendGraph = {};
+	
 	var query = "SELECT uid1, uid2 FROM friend WHERE uid1 in (SELECT uid2 FROM friend WHERE uid1=me())";
 		query += " AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())";
+	
+	// get friends and reduce
+	auth.graph.get("/me/friends", function(err, json) {
+		var friends = json.data.reduce(function(acc, person) {
+			acc[person.id] = person.name;
+			return acc;
+		});
 
+		var friend_id = Object.keys(friends);
+
+		// map friends and their ids
+		friendGraph.nodes = friend_id.map(function(friend_id) {
+			return {
+				id: friend_id,
+				name: friends[friendGraph]
+			}
+		});
+
+	});
+
+	// map mutual friends
 	auth.graph.fql(query, function(err, json) {
-	// auth.graph.get("/me/friends?fields=name,picture", function(err, json) {
+		friendGraph.edges = json.data.map(function(link) {
+			return {
+				source: friend_id.indexOf(link.uid1),
+				target: friend_id.indexOf(link.uid2)
+			}
+		});
+	});
 
-		res.json(json);
-	})
+	res.send(friendGraph);
 }
