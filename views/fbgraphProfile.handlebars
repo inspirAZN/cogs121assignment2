@@ -118,7 +118,7 @@ var friendGraph = {};
 			// collect the response and format or d3
 			console.log('here');
 
-			var friends = json.data.reduce(function(acc, person) {
+			var friends = response.data.reduce(function(acc, person) {
 				acc[person.id] = person.name;
 				return acc;
 			});
