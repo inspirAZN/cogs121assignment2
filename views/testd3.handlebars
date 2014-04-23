@@ -1,0 +1,46 @@
+{{> header}}
+
+
+{{> globaljs}}
+<script>
+	
+	var dataArray = [10, 20, 200, 34, 60, 43, 350, 700];
+
+	var width = 700;
+	var height = 700;
+
+	var widthScale = d3.scale.linear()
+						.domain([0, 900])
+						.range([0, width]);
+
+	var colorScale = d3.scale.linear()
+						.domain([0, 900])
+						.range(['green', 'blue']);
+
+	var axis = d3.svg.axis()
+					.ticks(5)
+					.scale(widthScale);
+
+	var svgCanvas = d3.select('body')
+					.append('svg')
+					.attr(width)
+					.attr(height)
+					.append('g')
+					.attr('transform', 'translate(100, 10)');
+
+	var bars = svgCanvas.selectAll('rect')
+					.data(dataArray)
+					.enter()
+						.append('rect')
+						.attr('width', function(d) { return widthScale(d); } )
+						.attr('height', 50)
+						.attr('fill', function(d) { return colorScale(d); })
+						.attr('y', function(d, i) { return i * 60});
+
+	svgCanvas.append('g')
+		.attr('transform', 'translate(0, 500)')
+		.call(axis);
+
+
+</script>
+{{> footer}}

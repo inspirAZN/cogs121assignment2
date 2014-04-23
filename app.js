@@ -34,6 +34,10 @@ app.use(app.router);
 
 //routes
 app.get('/', index.view);
+app.get('/d3test', function(req, res) {
+	res.render('testD3');
+});
+
 app.post('/', function(req, res) {
 	res.json('YES');
 });
