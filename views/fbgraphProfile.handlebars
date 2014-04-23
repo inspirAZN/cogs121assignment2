@@ -105,16 +105,41 @@
 <script src="../js/game.js"></script>
 
 <script>
+// the formatted json
+var friendGraph = {};
+
 // make an ajax request to get friend connections/data
-	// $.ajax({
-	// 		type: 'GET',
-	// 		url: '/fbgraph/friends',
-	// 		dataType: 'json'
-	// 	}).done( function(response) {
-	// 		// collect the response and start d3 implementation
-	// 		console.log('here');
-	// 		console.log(response.data);
-	// 	});
+
+	$.ajax({
+			type: 'GET',
+			url: '/fbgraph/friends',
+			dataType: 'json'
+		}).done( function(response) {
+			// collect the response and format or d3
+			console.log('here');
+
+			var friends = json.data.reduce(function(acc, person) {
+				acc[person.id] = person.name;
+				return acc;
+			});
+
+			var friend_id = Object.keys(friends);
+
+			// map friends and their ids
+			friendGraph.nodes = friend_id.map(function(friend_id) {
+				return {
+					id: friend_id,
+					name: friends[friendGraph]
+				}
+			});
+		console.log("the response was");
+
+		console.log(response);
+
+		console.log("the friend graph is now");
+
+		console.log(friendGraph);
+	});
 
 </script>
 
