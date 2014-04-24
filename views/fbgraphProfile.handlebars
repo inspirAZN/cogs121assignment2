@@ -236,10 +236,10 @@ var height = 1000;
 
 					console.log('setting tick');
 					force.on('tick', function() {
-						nodes.attr('cx', function(d) { return d.x; })
+						nodes.attr('cx', function(d) { console.log(d); return d.x; })
 							.attr('cy', function(d) { return d.y; });
 
-						edges.attr('x1', function(d) { return d.source.x; })
+						edges.attr('x1', function(d) { console.log(d); return d.source.x; })
 							.attr('x2', function(d) { return d.target.x; })
 							.attr('y1', function(d) { return d.source.y; })
 							.attr('y2', function(d) { return d.target.y; });
