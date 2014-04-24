@@ -130,11 +130,14 @@ var height = 1000;
 			var friend_id = Object.keys(friends);
 
 			// map friends and their ids
+
+			// nodes
 			console.log('setting up nodes');
 			friendGraph.nodes = friend_id.map(function(friend_id) {
 				return {
 					id: friend_id,
-					name: friends[friend_id]
+					name: friends[friend_id],
+					weight: 1
 				}
 			});
 
@@ -149,6 +152,7 @@ var height = 1000;
 					// last ajax call
 					console.log('getting mutual friends');
 
+					// edges
 					console.log('setting up edges');
 					friendGraph.edges = response.data.map(function(link) {
 						return {
