@@ -164,15 +164,14 @@ var friendGraph = {};
 								.nodes(friendGraph.nodes)
 								.links(friendGraph.edges)
 								.size([parseInt(d3.select('#myGraph').style('width'), 10),
-										parseInt(d3.select('#myGraph').style('height'), 10)]);
+										parseInt(d3.select('#myGraph').style('height'), 10)])
+								.start();
 
 					// svg container for the graph
 					var friendSVG = d3.select('body')
 										.append('svg')
-										.attr('width', parseInt(d3.select('#myGraph')
-											.style('width'), 10))
-										.attr('height', parseInt(d3.select('#myGraph')
-											.style('height'), 10));
+										.attr('width', parseInt(d3.select('#myGraph').style('width'), 10))
+										.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
 
 					// edges for the graph
 					var edge = friendSVG.selectAll('line.edge')
@@ -206,13 +205,8 @@ var friendGraph = {};
 					force.start();
 
 				});
-				console.log("the mutual friend response was");
 
-				console.log(response);
-
-				console.log("the friend graph is now");
-
-				console.log(friendGraph);
+				// console.log(friendGraph);
 		});
 
 	
