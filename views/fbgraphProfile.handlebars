@@ -147,8 +147,6 @@ var height = 1000;
 					url: '/fbgraph/mutualfriends',
 					dataType: 'json'
 				}).done( function(response) {
-
-					console.log(response);
 					// last ajax call
 					console.log('getting mutual friends');
 
@@ -194,7 +192,7 @@ var height = 1000;
 								.style('stroke-width', .6);
 
 					console.log('putting nodes on svg');
-					var nodes = friendSVG.selectAll('circle.node')
+					var node = friendSVG.selectAll('circle.node')
 								.data(friendGraph.nodes)
 								.enter()
 								.append('circle')
@@ -203,7 +201,6 @@ var height = 1000;
 								.style('fill', 'blue')
 								.style('cursor', 'pointer')
 								.call(force.drag);
-					console.log(nodes);
 
 					console.log('setting tick');
 					force.on('tick', function() {
