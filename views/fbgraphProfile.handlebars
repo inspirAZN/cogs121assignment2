@@ -201,8 +201,8 @@ var height = 1000;
 
 					// edges for the graph
 					console.log('putting edges on svg');
-					var edge = friendSVG.selectAll('line.edge')
-								.data(friendGraph.edges[0])
+					var edges = friendSVG.selectAll('line.edge')
+								.data(friendGraph.edges)
 								// .data(links)
 								.enter()
 								.append('line')
@@ -211,8 +211,8 @@ var height = 1000;
 								.style('stroke-width', .6);			
 
 					console.log('putting nodes on svg');
-					var node = friendSVG.selectAll('circle.node')
-								.data(friendGraph.nodes[0])
+					var nodes = friendSVG.selectAll('circle.node')
+								.data(friendGraph.nodes)
 								// .data(nodes)
 								.enter()
 								.append('circle')
@@ -223,19 +223,23 @@ var height = 1000;
 								.call(force.drag);
 
 					// set weights
-					console.log('trying to set weights');
-					edge.forEach(function(d) {
-						if(typeof d.source == "number") { d.source = node[d.source]; }
-						if(typeof d.target == "number") { d.target = node[d.target]; }
-					})
-					console.log(edge.data);
+					// console.log('trying to set weights');
+					// edge.forEach(function(d) {
+					// 	if(typeof d.source == "number") { d.source = node[d.source]; }
+					// 	if(typeof d.target == "number") { d.target = node[d.target]; }
+					// })
+					// console.log(edge.data);
+
+					console.log(edges);
+					console.log(nodes);
+
 
 					console.log('setting tick');
 					force.on('tick', function() {
-						node.attr('cx', function(d) { return d.x; })
+						nodes.attr('cx', function(d) { return d.x; })
 							.attr('cy', function(d) { return d.y; });
 
-						edge.attr('x1', function(d) { return d.source.x; })
+						edges.attr('x1', function(d) { return d.source.x; })
 							.attr('x2', function(d) { return d.target.x; })
 							.attr('y1', function(d) { return d.source.y; })
 							.attr('y2', function(d) { return d.target.y; });
