@@ -159,7 +159,10 @@ var height = 1000;
 					// check for null sources
 					var nullsrcs = 0;
 					for (var i = 0; i < friendGraph.edges.length; i++) {
-						console.log(friendGraph.edges[i].source);
+						if(friendGraph.edges[i].source === null ||
+							friendGraph.edges[i].source === undefined ) {
+							nullsrcs++;
+						};
 					}
 					console.log("there are " + nullsrcs + " null sources");
 
