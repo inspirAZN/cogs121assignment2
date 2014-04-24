@@ -156,15 +156,6 @@ var height = 1000;
 							target: friend_id.indexOf(link.uid2)
 						}
 					});
-					// check for null sources
-					var nullsrcs = 0;
-					for (var i = 0; i < friendGraph.edges.length; i++) {
-						if(friendGraph.edges[i].source === null ||
-							friendGraph.edges[i].source === undefined ) {
-							nullsrcs++;
-						};
-					}
-					console.log("there are " + nullsrcs + " null sources");
 
 					console.log('friendGraph complete');
 
@@ -221,6 +212,16 @@ var height = 1000;
 							.attr('y2', function(d) { return d.target.y; });
 					});
 
+					// check for null sources
+					var nullsrcs = 0;
+					for (var i = 0; i < friendGraph.edges.length; i++) {
+						if(friendGraph.edges[i].source === null ||
+							friendGraph.edges[i].source === undefined ) {
+							nullsrcs++;
+						};
+					}
+					console.log("there are " + nullsrcs + " null sources");
+					
 					console.log('starting...');
 					console.log(friendGraph);
 					force.start();
