@@ -174,7 +174,7 @@ var friendGraph = {};
 
 				// edges for the graph
 				var edges = friendSVG.selectAll('line.edge')
-							.data(friendGraph.edge)
+							.data(friendGraph.edges)
 							.enter()
 							.append('line')
 							.attr('class', 'edge')
