@@ -204,7 +204,7 @@ var height = 1000;
 
 					console.log('setting tick');
 					force.on('tick', function() {
-						nodes.attr('cx', function(d) { return d.x; })
+						node.attr('cx', function(d) { return d.x; })
 							.attr('cy', function(d) { return d.y; });
 
 						edge.attr('x1', function(d) { return d.source.x; })
