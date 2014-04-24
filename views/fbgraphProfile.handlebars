@@ -187,7 +187,7 @@ var friendGraph = {};
 				.style('stroke-width', .6);
 
 	var nodes = friendSVG.selectAll('circle.node')
-				.data(friendGraph.nodes)
+				.data('friendGraph.nodes')
 				.enter()
 				.attr('class', 'node')
 				.attr('r', 5)
