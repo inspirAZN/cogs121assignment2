@@ -170,8 +170,6 @@ var height = 1000;
 								.linkDistance(40)
 								.nodes(friendGraph.nodes)
 								.links(friendGraph.edges)
-								// .size([parseInt(d3.select('#myGraph').style('width'), 10),
-								// 		parseInt(d3.select('#myGraph').style('height'), 10)]);
 								.size([width, height]);
 
 					// svg container for the graph
@@ -225,7 +223,7 @@ var height = 1000;
 
 					console.log('starting...');
 					console.log(friendGraph.edges);
-					console.log(friendGraph.nodes);
+					console.log(friendGraph.nodes[0]);
 					force.start();
 					console.log('done!');
 
