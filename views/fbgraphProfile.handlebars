@@ -108,6 +108,10 @@
 // the formatted json
 var friendGraph = {};
 
+// width and height  of svg
+var width = 1000;
+var height = 1000;
+
 // make an ajax request to get friend connections/data
 
 	$.ajax({
@@ -162,15 +166,16 @@ var friendGraph = {};
 								.linkDistance(40)
 								.nodes(friendGraph.nodes)
 								.links(friendGraph.edges)
-								.size([parseInt(d3.select('#myGraph').style('width'), 10),
-										parseInt(d3.select('#myGraph').style('height'), 10)]);
+								// .size([parseInt(d3.select('#myGraph').style('width'), 10),
+								// 		parseInt(d3.select('#myGraph').style('height'), 10)]);
+								.size([width, height]);
 
 					// svg container for the graph
 					console.log('appending svg');
 					var friendSVG = d3.select('body')
 										.append('svg')
-										.attr('width', parseInt(d3.select('#myGraph').style('width'), 10))
-    									.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
+										.attr('width', width)
+    									.attr('height', height);
 
 					// edges for the graph
 					console.log('putting edges on svg');
