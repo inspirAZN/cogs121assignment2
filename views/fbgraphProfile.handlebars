@@ -168,14 +168,14 @@ var friendGraph = {};
 				.linkDistance(40)
 				.nodes(friendGraph.nodes)
 				.links(friendGraph.edges)
-				.size([parseInt(d3.select('#friendGraph').style('width'), 15),
-						parseInt(d3.select('#friendGraph').style('height'), 15)]);
+				.size([parseInt(d3.select('#myGraph').style('width'), 15),
+						parseInt(d3.select('#myGraph').style('height'), 15)]);
 
 	// svg container for the graph
 	var friendSVG = d3.select('body')
 						.append('svg')
-						.attr('width', parseInt(d3.select('#friendGraph').style('width'), 10))
-						.attr('height', parseInt(d3.select('#friendGraph').style('height'), 10));
+						.attr('width', parseInt(d3.select('#myGraph').style('width'), 10))
+						.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
 
 	// edges for the graph
 	var edges = friendSVG.selectAll('line.edge')
