@@ -156,7 +156,7 @@ var friendGraph = {};
 
 					console.log(friendGraph.edges);
 					console.log(friendGraph.nodes);
-					
+
 
 
 					// do the force layout
@@ -179,7 +179,7 @@ var friendGraph = {};
 										.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
 
 					// edges for the graph
-					var edge = friendSVG.selectAll('line.edge')
+					var edge = friendSVG.selectAll('.edge')
 								.data(friendGraph.edges)
 								.enter()
 								.append('line')
@@ -187,7 +187,7 @@ var friendGraph = {};
 								.style('stroke', 'rgba(120, 120, 120, 0.3')
 								.style('stroke-width', .6);
 
-					var nodes = friendSVG.selectAll('circle.node')
+					var nodes = friendSVG.selectAll('.node')
 								.data(friendGraph.nodes)
 								.enter()
 								.append('circle')
