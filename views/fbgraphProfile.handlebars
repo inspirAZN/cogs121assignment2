@@ -108,6 +108,7 @@
 // the formatted json
 var friendGraph = {};
 var links = {};
+var nodes = {};
 
 // width and height  of svg
 var width = "100%";
@@ -134,7 +135,14 @@ var height = 1000;
 
 			// nodes
 			console.log('setting up nodes');
-			friendGraph.nodes = friend_id.map(function(friend_id) {
+			// friendGraph.nodes = friend_id.map(function(friend_id) {
+			// 	return {
+			// 		id: friend_id,
+			// 		name: friends[friend_id],
+			// 	}
+			// });
+
+			nodes = friend_id.map(function(friend_id) {
 				return {
 					id: friend_id,
 					name: friends[friend_id],
@@ -175,9 +183,10 @@ var height = 1000;
 								.force()
 								.charge(-120)
 								.linkDistance(40)
-								.nodes(friendGraph.nodes)
+								// .nodes(friendGraph.nodes)
 								// .links(friendGraph.edges)
 								.links(links)
+								.nodes(nodes)
 								.size([width, height]);
 
 					// svg container for the graph
