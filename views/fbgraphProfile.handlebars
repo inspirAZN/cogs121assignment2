@@ -228,6 +228,7 @@ var height = 1000;
 						if(typeof d.source == "number") { d.source = node[d.source]; }
 						if(typeof d.target == "number") { d.target = node[d.target]; }
 					})
+					console.log(edge);
 
 					console.log('setting tick');
 					force.on('tick', function() {
