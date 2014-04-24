@@ -189,6 +189,7 @@ var friendGraph = {};
 	var nodes = friendSVG.selectAll('circle.node')
 				.data('friendGraph.nodes')
 				.enter()
+				.append('circle')
 				.attr('class', 'node')
 				.attr('r', 5)
 				.style('fill', 'blue')
