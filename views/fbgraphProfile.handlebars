@@ -169,8 +169,7 @@ var friendGraph = {};
 								.nodes(friendGraph.nodes)
 								.links(friendGraph.edges)
 								.size([parseInt(d3.select('#myGraph').style('width'), 10),
-										parseInt(d3.select('#myGraph').style('height'), 10)])
-								.start();
+										parseInt(d3.select('#myGraph').style('height'), 10)]);
 
 					// svg container for the graph
 					var friendSVG = d3.select('body')
@@ -179,7 +178,7 @@ var friendGraph = {};
 										.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
 
 					// edges for the graph
-					var edge = friendSVG.selectAll('.edge')
+					var edge = friendSVG.selectAll('line.edge')
 								.data(friendGraph.edges)
 								.enter()
 								.append('line')
@@ -187,7 +186,7 @@ var friendGraph = {};
 								.style('stroke', 'rgba(120, 120, 120, 0.3')
 								.style('stroke-width', .6);
 
-					var nodes = friendSVG.selectAll('.node')
+					var nodes = friendSVG.selectAll('circle.node')
 								.data(friendGraph.nodes)
 								.enter()
 								.append('circle')
