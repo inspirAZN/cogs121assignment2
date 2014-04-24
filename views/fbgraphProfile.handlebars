@@ -138,7 +138,6 @@ var height = 1000;
 				return {
 					id: friend_id,
 					name: friends[friend_id],
-					weight: 1
 				}
 			});
 
@@ -166,8 +165,6 @@ var height = 1000;
 							target: friend_id.indexOf(link.uid2)
 						}
 					});
-					console.log(links);
-
 
 					console.log('friendGraph complete');
 
@@ -220,13 +217,13 @@ var height = 1000;
 							.attr('y1', function(d) { return d.source.y; })
 							.attr('y2', function(d) { return d.target.y; });
 					});
-					// for(var i = 0; i < friendGraph.nodes.length; i++) {
-					// 	if( friendGraph.nodes[i] == undefined ) {
-					// 	console.log('node at ' + i + 'is undefined');
-					// 	} else if(friendGraph.nodes[i].source == undefined ) {
-					// 		console.log('node at ' + i + 'has source undefined');
-					// 	}	
-					// }
+					for(var i = 0; i < links.nodes.length; i++) {
+						if( links[i] == undefined ) {
+						console.log('node at ' + i + 'is undefined');
+						} else if(links[i].source == undefined ) {
+							console.log('node at ' + i + 'has source undefined');
+						}	
+					}
 					
 					// check for null sources
 					var nullsrcs = 0;
