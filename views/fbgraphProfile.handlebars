@@ -107,6 +107,7 @@
 <script>
 // the formatted json
 var friendGraph = {};
+var links = {};
 
 // width and height  of svg
 var width = "100%";
@@ -153,12 +154,20 @@ var height = 1000;
 					// edges
 					console.log('setting up edges');
 					friendGraph.edges = response.data.map(function(link) {
-						console.log(friend_id.indexOf(link.uid1));
 						return {
 							source: friend_id.indexOf(link.uid1),
 							target: friend_id.indexOf(link.uid2)
 						}
 					});
+
+					links = response.data.map(function(link) {
+						return {
+							source: friend_id.indexOf(link.uid1),
+							target: friend_id.indexOf(link.uid2)
+						}
+					});
+					console.log(links);
+
 
 					console.log('friendGraph complete');
 
