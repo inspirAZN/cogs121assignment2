@@ -116,7 +116,7 @@ var friendGraph = {};
 			dataType: 'json'
 		}).done( function(response) {
 			// collect the response and format or d3
-			console.log('here');
+			console.log('getting friends');
 
 			var friends = response.data.reduce(function(acc, person) {
 				acc[person.id] = person.name;
@@ -148,19 +148,11 @@ var friendGraph = {};
 							source: friend_id.indexOf(link.uid1),
 							target: friend_id.indexOf(link.uid2)
 						}
-					console.log('this was the mutual friend response');
-					console.log(response);
 					});
-					console.log('this is the final friend graph');
-					console.log(friendGraph);
-
-					console.log(friendGraph.edges);
-					console.log(friendGraph.nodes);
-
 
 
 					// do the force layout
-
+					console.log('setting up force layout');
 					// json is formatted. draw the graph with d3
 					var force = d3.layout
 								.force()
@@ -196,6 +188,7 @@ var friendGraph = {};
 								.style('cursor', 'pointer')
 								.call(force.drag);
 
+					console.log('setting tick');
 					force.on('tick', function() {
 						nodes.attr('cx', function(d) { return d.x; })
 							.attr('cy', function(d) { return d.y; });
@@ -207,6 +200,7 @@ var friendGraph = {};
 					});
 
 					force.start();
+					console.log('done!');
 
 				});
 
