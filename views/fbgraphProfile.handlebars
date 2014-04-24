@@ -107,8 +107,8 @@
 <script>
 // the formatted json
 var friendGraph = {};
-var links = {};
-var nodes = {};
+// var links = {};
+// var nodes = {};
 
 // width and height  of svg
 var width = "100%";
@@ -135,19 +135,19 @@ var height = 1000;
 
 			// nodes
 			console.log('setting up nodes');
-			// friendGraph.nodes = friend_id.map(function(friend_id) {
-			// 	return {
-			// 		id: friend_id,
-			// 		name: friends[friend_id],
-			// 	}
-			// });
-
-			nodes = friend_id.map(function(friend_id) {
+			friendGraph.nodes = friend_id.map(function(friend_id) {
 				return {
 					id: friend_id,
 					name: friends[friend_id],
 				}
 			});
+
+			// nodes = friend_id.map(function(friend_id) {
+			// 	return {
+			// 		id: friend_id,
+			// 		name: friends[friend_id],
+			// 	}
+			// });
 
 			// get mutual friends
 			$.ajax({
@@ -167,26 +167,25 @@ var height = 1000;
 						}
 					});
 
-					links = response.data.map(function(link) {
-						return {
-							source: friend_id.indexOf(link.uid1),
-							target: friend_id.indexOf(link.uid2)
-						}
-					});
+					// links = response.data.map(function(link) {
+					// 	return {
+					// 		source: friend_id.indexOf(link.uid1),
+					// 		target: friend_id.indexOf(link.uid2)
+					// 	}
+					// });
 
 					console.log('friendGraph complete');
 
 					// do the force layout
 					console.log('setting up force layout');
 					// json is formatted. draw the graph with d3
-					var force = d3.layout
-								.force()
+					var force = d3.layout.force()
 								.charge(-120)
-								.linkDistance(40)
-								// .nodes(friendGraph.nodes)
-								// .links(friendGraph.edges)
-								.links(links)
-								.nodes(nodes)
+								.linkDistance(30)
+								.nodes(friendGraph.nodes)
+								.links(friendGraph.edges)
+								// .links(links)
+								// .nodes(nodes)
 								.size([width, height]);
 
 					// svg container for the graph
@@ -199,8 +198,8 @@ var height = 1000;
 					// edges for the graph
 					console.log('putting edges on svg');
 					var edge = friendSVG.selectAll('line.edge')
-								// .data(friendGraph.edges)
-								.data(links)
+								.data(friendGraph.edges[0])
+								// .data(links)
 								.enter()
 								.append('line')
 								.attr('class', 'edge')
@@ -209,8 +208,8 @@ var height = 1000;
 
 					console.log('putting nodes on svg');
 					var node = friendSVG.selectAll('circle.node')
-								// .data(friendGraph.nodes)
-								.data(nodes)
+								.data(friendGraph.nodes[0])
+								// .data(nodes)
 								.enter()
 								.append('circle')
 								.attr('class', 'node')
