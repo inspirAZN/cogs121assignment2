@@ -78,7 +78,7 @@ exports.getFriends = function(req, res) {
 }
 
 exports.getMutualFriends = function(req, res) {
-	var query = "SELECT uid1, uid2 FROM friend WHERE uid1 in (SELECT uid2 FROM friend WHERE uid1=me())";
+	var query = "SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=me())";
 		query += " AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())";
 
 	// map mutual friends

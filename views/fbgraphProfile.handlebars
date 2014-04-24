@@ -170,7 +170,7 @@ var friendGraph = {};
 					var friendSVG = d3.select('body')
 										.append('svg')
 										.attr('width', parseInt(d3.select('#myGraph').style('width'), 10))
-										.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
+    									.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
 
 					// edges for the graph
 					console.log('putting edges on svg');
@@ -179,7 +179,7 @@ var friendGraph = {};
 								.enter()
 								.append('line')
 								.attr('class', 'edge')
-								.style('stroke', 'rgba(120, 120, 120, 0.3')
+								.style('stroke', 'rgba(200, 200, 200, 0.2')
 								.style('stroke-width', .6);
 
 					console.log('putting nodes on svg');
@@ -209,8 +209,6 @@ var friendGraph = {};
 					console.log('done!');
 
 				});
-
-				// console.log(friendGraph);
 		});
 
 	
