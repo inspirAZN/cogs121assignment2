@@ -181,6 +181,7 @@ var friendGraph = {};
 								.attr('class', 'edge')
 								.style('stroke', 'rgba(120, 120, 120, 0.3')
 								.style('stroke-width', .6);
+					console.log(friendGraph.edges);
 
 					var nodes = friendSVG.selectAll('circle.node')
 								.data(friendGraph.nodes)
@@ -191,6 +192,9 @@ var friendGraph = {};
 								.style('fill', 'blue')
 								.style('cursor', 'pointer')
 								.call(force.drag);
+
+					console.log(friendGraph.nodes);
+
 
 					force.on('tick', function() {
 						nodes.attr('cx', function(d) { return d.x; })
