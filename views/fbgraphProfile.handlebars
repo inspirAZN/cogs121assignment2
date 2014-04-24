@@ -105,7 +105,11 @@
 <script src="../js/game.js"></script>
 
 <script>
-// the formatted json
+
+$(document).ready(function() {
+
+
+	// the formatted json
 var friendGraph = {};
 // var links = {};
 // var nodes = {};
@@ -204,7 +208,7 @@ var height = 1000;
 								.append('line')
 								.attr('class', 'edge')
 								.style('stroke', 'rgba(200, 200, 200, 0.2')
-								.style('stroke-width', .6);
+								.style('stroke-width', .6);			
 
 					console.log('putting nodes on svg');
 					var node = friendSVG.selectAll('circle.node')
@@ -217,6 +221,13 @@ var height = 1000;
 								.style('fill', 'blue')
 								.style('cursor', 'pointer')
 								.call(force.drag);
+
+					// set weights
+					console.log('trying to set weights');
+					edge.forEach(function(d) {
+						if(typeof d.source == "number") { d.source = node[d.source]; }
+						if(typeof d.target == "number") { d.target = node[d.target]; }
+					})
 
 					console.log('setting tick');
 					force.on('tick', function() {
@@ -248,10 +259,9 @@ var height = 1000;
 				});
 		});
 
-	
 
 
-
+});
 </script>
 
 {{> footer}}
