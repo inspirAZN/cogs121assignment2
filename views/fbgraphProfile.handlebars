@@ -214,8 +214,8 @@ var height = 1000;
 					// check for null sources
 					var nullsrcs = 0;
 					for (var i = 0; i < friendGraph.edges.length; i++) {
-						if(friendGraph.edges[i].source === null ||
-							friendGraph.edges[i].source === undefined ) {
+						if(friendGraph.nodes[i].source === null ||
+							friendGraph.nodes[i].source === undefined ) {
 							nullsrcs++;
 						};
 					}
