@@ -158,12 +158,12 @@ var height = 1000;
 					});
 					// check for null sources
 					var nullsrcs = 0;
-					for (var i = 0; i < friendGraph.length; i++) {
-						if(friendGraph[i].source == undefined) {
+					for (var i = 0; i < friendGraph.edges.length; i++) {
+						if(friendGraph.edges.source == undefined) {
 							nullsrcs++;
 						}
 					}
-					console.log("there are " + nullsrcs + "null sources");
+					console.log("there are " + nullsrcs + " null sources");
 
 					console.log('friendGraph complete');
 
