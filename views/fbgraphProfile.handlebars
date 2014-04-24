@@ -210,7 +210,14 @@ var height = 1000;
 							.attr('y1', function(d) { return d.source.y; })
 							.attr('y2', function(d) { return d.target.y; });
 					});
-
+					for(var i = 0; i < friendGraph.nodes.length; i++) {
+						if( friendGraph.nodes[i] == undefined ) {
+						console.log('node at ' + i + 'is undefined');
+						} else if(friendGraph.nodes[i].source == undefined ) {
+							console.log('node at ' + i + 'has source undefined');
+						}	
+					}
+					
 					// check for null sources
 					var nullsrcs = 0;
 					friendGraph.nodes[0].source = 0;
