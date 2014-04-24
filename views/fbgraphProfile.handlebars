@@ -151,7 +151,7 @@ var height = 1000;
 
 					console.log('setting up edges');
 					friendGraph.edges = response.data.map(function(link) {
-						console.log(friend_id.indexOf(link.uid1));
+						console.log(link.uid1);
 						return {
 							source: friend_id.indexOf(link.uid1),
 							target: friend_id.indexOf(link.uid2)
