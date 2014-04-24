@@ -127,6 +127,7 @@ var friendGraph = {};
 
 			// map friends and their ids
 			friendGraph.nodes = friend_id.map(function(friend_id) {
+				console.log('setting up nodes');
 				return {
 					id: friend_id,
 					name: friends[friend_id]
@@ -144,12 +145,13 @@ var friendGraph = {};
 					console.log('getting mutual friends');
 
 					friendGraph.edges = response.data.map(function(link) {
+						console.log('setting up edges');
 						return {
 							source: friend_id.indexOf(link.uid1),
 							target: friend_id.indexOf(link.uid2)
 						}
 					});
-
+					console.log('friendGraph complete');
 
 					// do the force layout
 					console.log('setting up force layout');
@@ -164,12 +166,14 @@ var friendGraph = {};
 										parseInt(d3.select('#myGraph').style('height'), 10)]);
 
 					// svg container for the graph
+					console.log('appending svg');
 					var friendSVG = d3.select('body')
 										.append('svg')
 										.attr('width', parseInt(d3.select('#myGraph').style('width'), 10))
 										.attr('height', parseInt(d3.select('#myGraph').style('height'), 10));
 
 					// edges for the graph
+					console.log('putting edges on svg');
 					var edge = friendSVG.selectAll('line.edge')
 								.data(friendGraph.edges)
 								.enter()
@@ -178,6 +182,7 @@ var friendGraph = {};
 								.style('stroke', 'rgba(120, 120, 120, 0.3')
 								.style('stroke-width', .6);
 
+					console.log('putting nodes on svg');
 					var nodes = friendSVG.selectAll('circle.node')
 								.data(friendGraph.nodes)
 								.enter()
@@ -199,6 +204,7 @@ var friendGraph = {};
 							.attr('y2', function(d) { return d.target.y; });
 					});
 
+					console.log('starting...');
 					force.start();
 					console.log('done!');
 
