@@ -126,8 +126,8 @@ var friendGraph = {};
 			var friend_id = Object.keys(friends);
 
 			// map friends and their ids
+			console.log('setting up nodes');
 			friendGraph.nodes = friend_id.map(function(friend_id) {
-				console.log('setting up nodes');
 				return {
 					id: friend_id,
 					name: friends[friend_id]
@@ -144,8 +144,8 @@ var friendGraph = {};
 					// last ajax call
 					console.log('getting mutual friends');
 
+					console.log('setting up edges');
 					friendGraph.edges = response.data.map(function(link) {
-						console.log('setting up edges');
 						return {
 							source: friend_id.indexOf(link.uid1),
 							target: friend_id.indexOf(link.uid2)
@@ -205,7 +205,7 @@ var friendGraph = {};
 					});
 
 					console.log('starting...');
-					force.start();
+					// force.start();
 					console.log('done!');
 
 				});
