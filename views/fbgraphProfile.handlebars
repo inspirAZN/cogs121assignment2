@@ -217,7 +217,7 @@ var height = 1000;
 							.attr('y1', function(d) { return d.source.y; })
 							.attr('y2', function(d) { return d.target.y; });
 					});
-					for(var i = 0; i < links.nodes.length; i++) {
+					for(var i = 0; i < links.length; i++) {
 						if( links[i] == undefined ) {
 						console.log('node at ' + i + 'is undefined');
 						} else if(links[i].source == undefined ) {
