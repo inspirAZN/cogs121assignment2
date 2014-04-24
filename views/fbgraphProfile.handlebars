@@ -156,6 +156,15 @@ var height = 1000;
 							target: friend_id.indexOf(link.uid2)
 						}
 					});
+					// check for null sources
+					var nullsrcs = 0;
+					for (var i = 0; i < friendGraph.length; i++) {
+						if(friendGraph[i].source == undefined) {
+							nullsrcs++;
+						}
+					}
+					console.log("there are " + nullsrcs + "null sources");
+
 					console.log('friendGraph complete');
 
 					// do the force layout
