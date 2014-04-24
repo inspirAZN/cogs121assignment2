@@ -199,7 +199,8 @@ var height = 1000;
 					// edges for the graph
 					console.log('putting edges on svg');
 					var edge = friendSVG.selectAll('line.edge')
-								.data(friendGraph.edges)
+								// .data(friendGraph.edges)
+								.data(links)
 								.enter()
 								.append('line')
 								.attr('class', 'edge')
@@ -208,7 +209,8 @@ var height = 1000;
 
 					console.log('putting nodes on svg');
 					var node = friendSVG.selectAll('circle.node')
-								.data(friendGraph.nodes)
+								// .data(friendGraph.nodes)
+								.data(nodes)
 								.enter()
 								.append('circle')
 								.attr('class', 'node')
