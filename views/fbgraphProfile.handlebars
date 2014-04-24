@@ -193,7 +193,7 @@ var friendGraph = {};
 								.call(force.drag);
 
 					force.on('tick', function() {
-						node.attr('cx', function(d) { return d.x; })
+						nodes.attr('cx', function(d) { return d.x; })
 							.attr('cy', function(d) { return d.y; });
 
 						edge.attr('x1', function(d) { return d.source.x; })
