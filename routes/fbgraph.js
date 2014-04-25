@@ -77,11 +77,11 @@ exports.getDemographics = function (req, res) {
 		// loop throuh the json
 		for( var i = 0; i < json.data.length; i++) {
 			// calculate num male
-			if( json.data[i] == 'male' ) {
+			if( json.data[i].gender == 'male' ) {
 				numMale++;
 			}
 			// calculate num female
-			else if( json.data[i] == 'male' ) {
+			else if( json.data[i].gender == 'female' ) {
 				numFemale++;
 			}
 		}
