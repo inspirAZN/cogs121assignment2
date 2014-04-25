@@ -74,17 +74,24 @@ exports.getDemographics = function (req, res) {
 	var numFemale = 0;
 	// get the friends
 	auth.graph.get('/me/friends?fields=gender', function(err, json) {
-		res.json(json);
-
 		// loop throuh the json
-
-		// calculate num male
-
-		// calculate num female
+		for( var i = 0; i < json.data.length; i++) {
+			// calculate num male
+			if( json.data[i] == 'male' ) {
+				numMale++;
+			}
+			// calculate num female
+			else if( json.data[i] == 'male' ) {
+				numFemale++;
+			}
+		}
 
 		// save to demographic json
+		demoJSON.male = numMale;
+		demoJSON.female = numFemale;
 
 		// send demographic json
+		res.render(demoJSON);
 	});
 }
 
