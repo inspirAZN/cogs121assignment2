@@ -161,6 +161,10 @@ $(document).ready(function() {
 			.text(function (d) {return d.data;})
 			.attr('fill', '#fff');
 
+		canvas.append('p')
+			.text(function(d) { return "You have " + d.data[0] + "Male friends."}) 
+			.text(function(d) { return "You have " + d.data[1] + "Female friends."}); 
+
 
 	});
 
