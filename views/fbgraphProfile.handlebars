@@ -108,26 +108,6 @@
 
 $(document).ready(function() {
 
-	// arc chart variables
-
-	var radius = 300;							// radius for the chart
-
-	var color = d3.scale.ordinal()
-				.range(["#c0392b", "#2980b9"]); // color scale
-
-	var canvas = d3.select('#myGraph').append('svg')
-				.attr('width', '100%')
-				.attr('height', 1000);			// svg canvas
-
-	var group = canvas.append('g')
-				.attr('transform', 'translate(250,250)');	// group container
-
-	var arc = d3.svg.arc() 
-				.innerRadius(200)
-				.outerRadius(radius);			// complete pie chart arc
-
-	var arcs;			// appending arcs
-
 
 	// make an ajax call to get friend demographics
 
@@ -139,18 +119,39 @@ $(document).ready(function() {
 		// set the data of the arcs
 		console.log(response);
 
-		var pie = d3.layout.pie()
-				.value(function (d) { return d; });	// piechart layout
+		// arc chart variables
 
-		arcs = group.selectAll('.arc')
-				.data(pie(response))
-				.enter()
-				.append('g')
-				.attr('class', 'arc');
+		var radius = 300;							// radius for the chart
+
+		var color = d3.scale.ordinal()
+					.range(["#c0392b", "#2980b9"]); // color scale
+
+		var canvas = d3.select('#myGraph').append('svg')
+					.attr('width', '100%')
+					.attr('height', 1000);			// svg canvas
+
+		var group = canvas.append('g')
+					.attr('transform', 'translate(250,250)');	// group container
+
+		var arc = d3.svg.arc() 
+					.innerRadius(200)
+					.outerRadius(radius);			// complete pie chart arc
+
+		var pie = d3.layout.pie()
+					.value(function (d) { return d; });	// piechart layout
+
+		var arcs = 	group.selectAll('.arc')
+					.data(pie(response))
+					.enter()
+					.append('g')
+					.attr('class', 'arc');		// appending arcs
 
 		arcs.append('path')
 			.attr('d', arc)
 			.attr('fill', function(d) { return color(d.response); });
+
+		arcs.append('text')
+			.attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; });
 
 	});
 
