@@ -118,6 +118,11 @@ $(document).ready(function() {
 		// set the data of the arcs
 		console.log(response);
 
+		var data = [];
+
+		data[0] = response.male;
+		data[1] = response.female;
+		
 		// arc chart variables
 
 		var radius = 300;							// radius for the chart
@@ -140,17 +145,17 @@ $(document).ready(function() {
 					.value(function (d) { return d; });	// piechart layout
 
 		var arcs = 	group.selectAll('.arc')
-					.data(pie(response.data))
+					.data(pie(data))
 					.enter()
 					.append('g')
 					.attr('class', 'arc');		// appending arcs
 
 		arcs.append('path')
 			.attr('d', arc)
-			.attr('fill', function(d) { return color(d.response.data); });
+			.attr('fill', function(d) { return color(d.data); });
 
 		arcs.append('text')
-			.attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; });
+			.attr('transform', function(d) { return 'translate(' + arc.centroid(d.data) + ')'; });
 
 	});
 
