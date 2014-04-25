@@ -91,7 +91,7 @@ exports.getDemographics = function (req, res) {
 		demoJSON.female = numFemale;
 
 		// send demographic json
-		res.render(demoJSON);
+		res.json(demoJSON);
 	});
 }
 
