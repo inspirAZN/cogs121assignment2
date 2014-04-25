@@ -47,14 +47,15 @@
 				</div>
 			</div>
 		</div>
-		<a href="/fbgraph/friends"> click </a>
+		<!-- <a href="/fbgraph/friends"> click </a> -->
 		<div class="row-fluid">
 			<!-- <a href="/fbgraph/friends">view friends</a> -->
 			<div id="myGraph">
 				<!-- Populate svg d3 graph here -->
 			</div>
 			<div id="results">
-
+				<h2><span id="male"></span></h2>
+				<h2><span id="femlale"></span></h2>
 			</div>
 		</div>
 
@@ -134,7 +135,7 @@ $(document).ready(function() {
 					.range(["#c0392b", "#2980b9"]); // color scale
 
 		var canvas = d3.select('#myGraph').append('svg')
-					.attr('width', '100%')
+					.attr('width', '80%')
 					.attr('height', 1000);			// svg canvas
 
 		var group = canvas.append('g')
@@ -165,16 +166,16 @@ $(document).ready(function() {
 			.attr('fill', '#fff');
 
 		// display the resuts
-		var maleString = '<p class="male">You have ';
+		var maleString = 'You have ';
 			maleString += response.male;
-			maleString += ' male friends.</p>';
+			maleString += ' male friends.';
 
-		var femaleString = '<p class="female">You have ';
+		var femaleString = 'You have ';
 			femaleString += response.female;
-			femaleString += ' female friends.</p>';
+			femaleString += ' female friends.';
 
-		$('#resuts').append(maleString);
-		$('#resuts').append(femaleString);
+		$('#male').text(maleString);
+		$('#female').text(femaleString);
 
 
 	});
