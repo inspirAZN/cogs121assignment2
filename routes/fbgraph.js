@@ -70,6 +70,7 @@ exports.graphAPI = function (req, res) {
 
 exports.getDemographics = function (req, res) {
 	var demoJSON = {};
+	demoJSON.data = [];
 	var numMale = 0;	
 	var numFemale = 0;
 	// get the friends
@@ -87,8 +88,8 @@ exports.getDemographics = function (req, res) {
 		}
 
 		// save to demographic json
-		demoJSON.male = numMale;
-		demoJSON.female = numFemale;
+		demoJSON.data[0] = { male: numMale };
+		demoJSON.data[1] = { female: numFemale};
 
 		// send demographic json
 		res.send(demoJSON);
