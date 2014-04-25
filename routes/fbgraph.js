@@ -68,13 +68,31 @@ exports.graphAPI = function (req, res) {
 	});
 }
 
+exports.getDemographics = function (req, res) {
+	var demoJSON = {};
+	var numMale = 0;	
+	var numFemale = 0;
+	// get the friends
+	auth.graph.get('/me/friends?fields=gender', function(err, json) {
+		res.json(json);
+
+		// loop throuh the json
+
+		// calculate num male
+
+		// calculate num female
+
+		// save to demographic json
+
+		// send demographic json
+	});
+}
+
 exports.getFriends = function(req, res) {	
 	// get friends and reduce
 	auth.graph.get("/me/friends", function(err, json) {
 		res.send(json);
 	});
-
-	
 }
 
 exports.getMutualFriends = function(req, res) {
@@ -85,6 +103,4 @@ exports.getMutualFriends = function(req, res) {
 	auth.graph.fql(query, function(err, json) {
 		res.send(json);
 	});
-
-
 }
