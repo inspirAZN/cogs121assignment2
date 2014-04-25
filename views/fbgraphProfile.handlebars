@@ -120,8 +120,8 @@ $(document).ready(function() {
 
 		var data = [];
 
-		data[0] = {male: response.male};
-		data[1] = {female: response.female};
+		data[0] = response.male;
+		data[1] = response.female;
 
 		// arc chart variables
 
@@ -161,9 +161,8 @@ $(document).ready(function() {
 			.text(function (d) {return d.data;})
 			.attr('fill', '#fff');
 
-
-
-
+		canvas.append('p')
+			.text(function (d) { return "You have " + d.data[0] + "male friends";});
 	});
 
 
