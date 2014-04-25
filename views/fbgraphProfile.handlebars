@@ -53,6 +53,9 @@
 			<div id="myGraph">
 				<!-- Populate svg d3 graph here -->
 			</div>
+			<div id="results">
+
+			</div>
 		</div>
 
 		<!-- modal collection -->
@@ -161,8 +164,19 @@ $(document).ready(function() {
 			.text(function (d) {return d.data;})
 			.attr('fill', '#fff');
 
-		canvas.append('p')
-			.text(function (d) { return "You have " + d.data[0] + "male friends";});
+		// display the resuts
+		var maleString = '<p class="male">You have ';
+			maleString += response.male;
+			maleString += ' male friends.</p>';
+
+		var femaleString = '<p class="female">You have ';
+			femaleString += response.female;
+			femaleString += ' female friends.</p>';
+
+		$('#resuts').append(maleString);
+		$('#resuts').append(femaleString);
+
+
 	});
 
 
