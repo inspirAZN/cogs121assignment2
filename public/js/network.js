@@ -17,6 +17,13 @@ var height = 1000;
 			// collect the response and format or d3
 			console.log('getting friends');
 
+			d3.json( response, function(error, json) {
+				if (error) return console.warn(error);
+				data = json;
+			    visualizeit();
+			});
+
+
 			var friends = response.data.reduce(function(acc, person) {
 				acc[person.id] = person.name;
 				return acc;
