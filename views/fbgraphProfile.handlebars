@@ -129,7 +129,7 @@ $(document).ready(function() {
 	var pieGraph = d3.layout.pie()
 				.value(function (d) { return d; });	// piechart layout
 
-	var arcs = group.selectAll('.arc');			// appending arcs
+	var arcs;			// appending arcs
 
 
 	// make an ajax call to get friend demographics
@@ -142,10 +142,11 @@ $(document).ready(function() {
 		// set the data of the arcs
 		console.log(response);
 
-		arcs.data(pieGraph(response))
-			.enter()
-			.append('g')
-			.attr('class', 'arc');
+		arcs = group.selectAll('.arc')
+				.data(pieGraph(response))
+				.enter()
+				.append('g')
+				.attr('class', 'arc');
 
 		arcs.append('path')
 			.attr('d', arc)
