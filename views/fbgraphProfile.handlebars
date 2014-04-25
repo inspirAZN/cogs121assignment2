@@ -141,14 +141,14 @@ $(document).ready(function() {
 					.value(function (d) { return d; });	// piechart layout
 
 		var arcs = 	group.selectAll('.arc')
-					.data(pie(response))
+					.data(pie(response.data))
 					.enter()
 					.append('g')
 					.attr('class', 'arc');		// appending arcs
 
 		arcs.append('path')
 			.attr('d', arc)
-			.attr('fill', function(d) { return color(d.response); });
+			.attr('fill', function(d) { return color(d.response.data); });
 
 		arcs.append('text')
 			.attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; });
