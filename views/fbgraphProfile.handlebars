@@ -142,6 +142,15 @@ $(document).ready(function() {
 		// set the data of the arcs
 		console.log(response);
 
+		arcs.data(pieGraph(response))
+			.enter()
+			.append('g')
+			.attr('class', 'arc');
+
+		arcs.append('path')
+			.attr('d', arc)
+			.attr('fill', function(d) { return color(d.response); });
+
 	});
 
 
