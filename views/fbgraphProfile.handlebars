@@ -126,20 +126,23 @@ $(document).ready(function() {
 				.innerRadius(200)
 				.outerRadius(radius);			// complete pie chart arc
 
-	var pieGraph = d3.layout.pie();				// piechart layout
+	var pieGraph = d3.layout.pie()
+				.value(function (d) { return d; });	// piechart layout
 
 	var arcs = group.selectAll('.arc');			// appending arcs
 
 
 	// make an ajax call to get friend demographics
 
-	// $.ajax({
-	// 	type: 'GET',
-	// 	url: '/fbgraph/friendDemographics',
-	// 	dataType: 'json'
-	// }).done(function(response) {
-		
-	// });
+	$.ajax({
+		type: 'GET',
+		url: '/fbgraph/friendDemographics',
+		dataType: 'json'
+	}).done(function(response) {
+		// set the data of the arcs
+		console.log(response);
+
+	});
 
 
 });
