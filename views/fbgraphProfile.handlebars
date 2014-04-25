@@ -126,9 +126,6 @@ $(document).ready(function() {
 				.innerRadius(200)
 				.outerRadius(radius);			// complete pie chart arc
 
-	var pie = d3.layout.pie()
-				.value(function (d) { return d; });	// piechart layout
-
 	var arcs;			// appending arcs
 
 
@@ -141,6 +138,9 @@ $(document).ready(function() {
 	}).done(function(response) {
 		// set the data of the arcs
 		console.log(response);
+
+		var pie = d3.layout.pie()
+				.value(function (d) { return d; });	// piechart layout
 
 		arcs = group.selectAll('.arc')
 				.data(pie(response))
