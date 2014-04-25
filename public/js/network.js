@@ -135,11 +135,6 @@ var height = 1000;
 				});
 		});
 
-
-
-
-	});
-
 	// $.ajax({
 	// 		type: 'GET',
 	// 		url: '/fbgraph/friends',
