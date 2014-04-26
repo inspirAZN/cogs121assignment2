@@ -56,7 +56,7 @@
 			<!-- <a href="/fbgraph/friends">view friends</a> -->
 			<div class="panel">
 				<div class="panel-body">
-					<div class="col-lg-6" id="myGraph">
+					<div class="col-lg-5" id="myGraph">
 						<!-- Populate svg d3 graph here -->
 					</div>
 					<div class="col-lg-4">
@@ -146,11 +146,11 @@ $(document).ready(function() {
 					.range(["#2980b9", "#c0392b"]); // color scale
 
 		var canvas = d3.select('#myGraph').append('svg')
-					.attr('width', '80%')
+					.attr('width', '100%')
 					.attr('height', 500);			// svg canvas
 
 		var group = canvas.append('g')
-					.attr('transform', 'translate(250,250)');	// group container
+					.attr('transform', 'translate(200,250)');	// group container
 
 		var arc = d3.svg.arc() 
 					.innerRadius(125)

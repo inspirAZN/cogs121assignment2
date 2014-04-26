@@ -60,6 +60,7 @@ app.get('/authn/facebook', auth.passport.authenticate('facebook', { scope: ['rea
 			                                      	   		   'publish_actions', 
 			                                      	   		   'user_birthday',
 			                                      	   		   'friends_birthday',
+			                                      	   		   'friends_relationships',
 			                                      	   		   'user_photos',
 			                                      	   		   'friends_photos',
 			                                      	   		   'user_status',
