@@ -92,32 +92,34 @@ exports.getDemographics = function (req, res) {
 		}
 
 		auth.graph.fql(query, function(err, json) {
-		// loop through and count relations
-		for( var i = 0;i < json.data.length; i++) {
-			// calculate 
-			if( json.data[i].relationship_status == 'In a relationship') {
-				numRelation++;
-			} else if( json.data[i].relationship_status == 'Single' ) {
-				numSingle++;
-			} else if( json.data[i].relationship_status == 'Married' ){
-				numMarried++;
-			} else {
-				numUnknown++;
+			// loop through and count relations
+			for( var i = 0;i < json.data.length; i++) {
+				// calculate 
+				if( json.data[i].relationship_status == 'In a relationship') {
+					numRelation++;
+				} else if( json.data[i].relationship_status == 'Single' ) {
+					numSingle++;
+				} else if( json.data[i].relationship_status == 'Married' ){
+					numMarried++;
+				} else {
+					numUnknown++;
+				}
 			}
-		}
-	})
+
+			// save to demographic json
+			demoJSON.male = numMale;
+			demoJSON.female = numFemale;
+			demoJSON.single = numSingle;
+			demoJSON.relationship = numRelation;
+			demoJSON.married = numMarried;
+			demoJSON.unknown = numUnknown;
+
+
+			// send demographic json
+			res.send(demoJSON);
+
+		});
 	
-	// save to demographic json
-		demoJSON.male = numMale;
-		demoJSON.female = numFemale;
-		demoJSON.single = numSingle;
-		demoJSON.relationship = numRelation;
-		demoJSON.married = numMarried;
-		demoJSON.unknown = numUnknown;
-
-
-	// send demographic json
-		res.send(demoJSON);
 
 	});
 	
