@@ -91,9 +91,7 @@ exports.getDemographics = function (req, res) {
 			}
 		}
 
-	});
-	
-	auth.graph.fql(query, function(err, json) {
+		auth.graph.fql(query, function(err, json) {
 		// loop through and count relations
 		for( var i = 0;i < json.data.length; i++) {
 			// calculate 
@@ -121,12 +119,10 @@ exports.getDemographics = function (req, res) {
 	// send demographic json
 		res.send(demoJSON);
 
+	});
+	
+
 }
-
-exports.getRelations = function(req, res) {
-
-}
-
 
 exports.getFriends = function(req, res) {	
 	// get friends and reduce

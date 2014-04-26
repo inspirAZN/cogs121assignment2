@@ -53,7 +53,6 @@ app.get('/fbgraph/json', function(req, res) {
 app.get('/fbgraph/friends', fbgraph.getFriends);
 app.get('/fbgraph/mutualfriends', fbgraph.getMutualFriends);
 app.get('/fbgraph/friendDemographics', fbgraph.getDemographics);
-app.get('/fbgraph/friends_relationships', fbgraph.getRelations);
 
 // facebook authentication
 // main login
