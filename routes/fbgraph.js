@@ -91,13 +91,31 @@ exports.getDemographics = function (req, res) {
 			}
 		}
 
-		// save to demographic json
+	});
+	
+	auth.graph.fql(query, function(err, json) {
+		// loop through and count relations
+		for( var i = 0;i < json.data.length; i++) {
+			// calculate 
+			if( json.data[i].relationship_status == 'In a relationship') {
+				numRelation++;
+			} else if( json.data[i].relationship_status == 'Single' ) {
+				numSingle++;
+			} else if( json.data[i].relationship_status == 'Married' ){
+				numMarried++;
+			} else {
+				numUnknown++;
+			}
+		}
+	})
+	
+	// save to demographic json
 		demoJSON.male = numMale;
 		demoJSON.female = numFemale;
-	});
-
-	
-
+		demoJSON.single = numSingle;
+		demoJSON.relationship = numRelation;
+		demoJSON.married = numMarried;
+		demoJSON.unknown = numUnknown;
 
 
 	// send demographic json
@@ -106,11 +124,7 @@ exports.getDemographics = function (req, res) {
 }
 
 exports.getRelations = function(req, res) {
-	var query = "SELECT uid, name, relationship_status FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())";
-	
-	auth.graph.fql(query, function(err, json) {
-		res.json(json);
-	})
+
 }
 
 
