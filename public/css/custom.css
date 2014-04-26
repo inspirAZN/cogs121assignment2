@@ -1,3 +1,25 @@
+path.slice{
+	stroke-width:2px;
+}
+polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+} 
+svg text.percent{
+	fill:white;
+	text-anchor:middle;
+	font-size:12px;
+}
+
+.legend {
+    padding: 5px;
+    font: 15px sans-serif;
+    background: yellow;
+    box-shadow: 2px 2px 1px #888;
+}
+
 #profPic {
 	height: 250px;
 	width: 250px;
