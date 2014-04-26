@@ -25,6 +25,10 @@ svg text.percent{
 	width: 250px;
 }
 
+#myGraph {
+	width: 50%;
+}
+
 .red {
 	color: #e74c3c !important;
 }
