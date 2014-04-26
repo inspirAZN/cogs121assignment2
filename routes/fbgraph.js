@@ -72,6 +72,10 @@ exports.getDemographics = function (req, res) {
 	var demoJSON = {};
 	var numMale = 0;	
 	var numFemale = 0;
+	var numSingle = 0;
+	var numRelation = 0;
+	var numMarried = 0;
+	var numUnknown = 0;
 	var query = "SELECT uid, name, relationship_status FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())";
 	// get the friends
 	auth.graph.get('/me/friends?fields=gender', function(err, json) {
@@ -92,16 +96,23 @@ exports.getDemographics = function (req, res) {
 		demoJSON.female = numFemale;
 	});
 
-	auth.graph.fql(query, function(err, json) {
-		res.json(json);
-	})
+	
 
 
 
 	// send demographic json
-		// res.send(demoJSON);
+		res.send(demoJSON);
 
 }
+
+exports.getRelations = function(req, res) {
+	var query = "SELECT uid, name, relationship_status FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())";
+	
+	auth.graph.fql(query, function(err, json) {
+		res.json(json);
+	})
+}
+
 
 exports.getFriends = function(req, res) {	
 	// get friends and reduce
