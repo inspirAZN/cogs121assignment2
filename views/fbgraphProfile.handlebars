@@ -183,9 +183,20 @@ $(document).ready(function() {
 
 
 });
-</script>
-<script>
-//Values for boys and girls. Would be taken from JSON
+
+d3.json('/fbgraph/friendDemographics', function(error, response) {
+		if (error) return console.warn(error);
+
+		// set the data of the arcs
+		console.log(response);
+
+		var data = [];
+
+		data[0] = response.male;
+		data[1] = response.female;
+
+
+		//Values for boys and girls. Would be taken from JSON
 var boys = 700;
 
 var girls = 300;
@@ -199,8 +210,8 @@ var unknown = 400;
 //Fields used to set the information needed for the gender graph
 
 var genderData=[
-	{label:"Boys", color:"#3366CC", value:boys},
-	{label:"Girls", color:"#DC3912", value:girls},
+	{label:"Boys", color:"#3366CC", value:response.male},
+	{label:"Girls", color:"#DC3912", value:response.female},
 ];	
 
 //Fields used to set the information needed for the relationship graph
@@ -363,6 +374,9 @@ function defaultRelationData(){
           .style("fill", color_gender[String(i)][1])
           .text(color_gender[String(i)][0]);
       });
+
+
+});
 
 </script>
 
