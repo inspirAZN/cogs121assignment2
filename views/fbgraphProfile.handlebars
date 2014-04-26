@@ -197,9 +197,9 @@ d3.json('/fbgraph/friendDemographics', function(error, response) {
 
 
 		//Values for boys and girls. Would be taken from JSON
-var boys = 700;
+var boys = response.male;
 
-var girls = 300;
+var girls = response.female;
 
 //Values for relationships. Would be taken from JSON
 var single = 100;
@@ -210,8 +210,8 @@ var unknown = 400;
 //Fields used to set the information needed for the gender graph
 
 var genderData=[
-	{label:"Boys", color:"#3366CC", value:response.male},
-	{label:"Girls", color:"#DC3912", value:response.female},
+	{label:"Boys", color:"#3366CC", value:boys},
+	{label:"Girls", color:"#DC3912", value:girls},
 ];	
 
 //Fields used to set the information needed for the relationship graph
