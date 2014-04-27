@@ -214,8 +214,8 @@ $(document).ready(function() {
 
 			//Default graph. Used to transition to genderData
 			var defaultGenderData=[
-				{label:"Boys", color:"#3366CC", value:boys},
-				{label:"Girls", color:"#DC3912", value:girls},
+				{label:"Boys", color:"#3366CC", value:50},
+				{label:"Girls", color:"#DC3912", value:50},
 			];	
 
 			//Default graph. Used to transition to relationshipData.
@@ -227,144 +227,144 @@ $(document).ready(function() {
 			];
 
 
-			var svg = d3.select("#otherGraph").append("svg").attr("width",700).attr("height",300);
+			var svg = d3.select("body").append("svg").attr("width",700).attr("height",300);
 
 			svg.append("g").attr("id","genderDonut");
 			svg.append("g").attr("id","relationshipDonut");
 
-									//150,150 centers the ring at those coordinates
-									//130, 100 are the x-length and y-height of the graph
-									//30 is the height of the chart (shadowed area)
-									//0.4 is inner radius
-		//Draws gender data chart 			
-		Donut3D.draw("genderDonut", defaultGenData(), 150, 150, 130, 100, 30, 0.4);
-		Donut3D.draw("relationshipDonut", defaultRelationData(), 450, 150, 130, 100, 30, 0);
+										//150,150 centers the ring at those coordinates
+										//130, 100 are the x-length and y-height of the graph
+										//30 is the height of the chart (shadowed area)
+										//0.4 is inner radius
+			//Draws gender data chart 			
+			Donut3D.draw("genderDonut", defaultGenData(), 150, 150, 130, 100, 30, 0.4);
+			Donut3D.draw("relationshipDonut", defaultRelationData(), 450, 150, 130, 100, 30, 0);
 
-		//Transitions between gender and relationship fields
-		function changeData(){
-			Donut3D.transition("genderDonut", genData(), 130, 100, 30, 0.4);
-			Donut3D.transition("relationshipDonut", relationData(), 130, 100, 30, 0);
-		}
-
-
-
-		//Sets the data onto the pie chart using values from genderData
-		function genData(){
-			return genderData.map(function(d){ 
-				return {label:d.label, value:d.value, color:d.color};});
-		}
-
-		//Sets the data onto the pie chart using values from relationshipData
-		function relationData(){
-			return relationshipData.map(function(d){ 
-				return {label:d.label, value:d.value, color:d.color};});
-		}
-
-		//Uses default gender info. for transitioning purposes
-		function defaultGenData(){
-			return defaultGenderData.map(function(d){ 
-				return {label:d.label, value:d.value, color:d.color};});
-		}
-
-		//Uses default relationship info. for transitioning purposes
-		function defaultRelationData(){
-			return defaultRelationshipData.map(function(d){ 
-				return {label:d.label, value:d.value, color:d.color};});
-		}
-	
-		//Beginning of legend material
-		var w = 500;
-	    var h = 300;  
-	    
-	    //4 entries for the relationship graph
-	    var dataset = [
-	        [],[],[],[]
-	    ];
-
-	    //2 entries for the gender graph
-	    var dataset2 = [
-	        [],[]
-	    ];
-
-		var color_gender = {  0 : ["Males", "#3366CC"],
-						    1 : ["Females", "#DC3912"],
-						  } 
-
-	    var color_relationships = {  0 : ["Single", "#FF9900"],
-						    1 : ["In A Relationship", "#109618"],
-						    2 : ["Married", "#990099"],
-						    3 : ["Unknown", "#FF00FF"]
-						  }                     
-
-		// Create SVG element
-		var svg = d3.select("#legend")
-		    .append("svg")
-		    .attr("width", w)
-		    .attr("height", h);
+			//Transitions between gender and relationship fields
+			function changeData(){
+				Donut3D.transition("genderDonut", genData(), 130, 100, 30, 0.4);
+				Donut3D.transition("relationshipDonut", relationData(), 130, 100, 30, 0);
+			}
 
 
 
-		//Relationship
-		var legendRelationships = svg.append("g")
-		  .attr("class", "legend")
-		  .attr("x", w - 65)
-		  .attr("y", 25)
-		  .attr("height", 100)
-		  .attr("width", 300);
+			//Sets the data onto the pie chart using values from genderData
+			function genData(){
+				return genderData.map(function(d){ 
+					return {label:d.label, value:d.value, color:d.color};});
+			}
 
-		var legendGender = svg.append("g")
-		  .attr("class", "legend")
-		  .attr("x", w)
-		  .attr("y", 25)
-		  .attr("height", 100)
-		  .attr("width", 300);  
+			//Sets the data onto the pie chart using values from relationshipData
+			function relationData(){
+				return relationshipData.map(function(d){ 
+					return {label:d.label, value:d.value, color:d.color};});
+			}
 
-		legendRelationships.selectAll('g').data(dataset)
-	      .enter()
-	      .append('g')
-	      .each(function(d, i) {
-	        var g = d3.select(this);
-	        g.append("rect")
-	          .attr("x", w - 125)
-	          .attr("y", i*25 + 4)
-	          .attr("width", 10)
-	          .attr("height", 10)
-	          .style("fill", color_relationships[String(i)][1]);
-	        
-	        g.append("text")
-	          .attr("x", w - 110)
-	          .attr("y", i * 25 + 15)
-	          .attr("height",30)
-	          .attr("width",300)
-	          .style("fill", color_relationships[String(i)][1])
-	          .text(color_relationships[String(i)][0]);
-	      }
+			//Uses default gender info. for transitioning purposes
+			function defaultGenData(){
+				return defaultGenderData.map(function(d){ 
+					return {label:d.label, value:d.value, color:d.color};});
+			}
 
-	    //Gender Legend
-	    legendGender.selectAll('g').data(dataset2)
-	    .enter()
-	    .append('g')
-	    .each(function(d, i) {
-	        var g = d3.select(this);
-	        g.append("rect")
-	          .attr("x", w - 400)
-	          .attr("y", i*25 + 4)
-	          .attr("width", 10)
-	          .attr("height", 10)
-	          .style("fill", color_gender[String(i)][1]);
-	        
-	        g.append("text")
-	          .attr("x", w - 385)
-	          .attr("y", i * 25 + 15)
-	          .attr("height",30)
-	          .attr("width",300)
-	          .style("fill", color_gender[String(i)][1])
-	          .text(color_gender[String(i)][0]);
-		}
-	}
+			//Uses default relationship info. for transitioning purposes
+			function defaultRelationData(){
+				return defaultRelationshipData.map(function(d){ 
+					return {label:d.label, value:d.value, color:d.color};});
+			}
+				
+			//Beginning of legend material
+				var w = 500;
+			    var h = 300;  
+			    
+			    //4 entries for the relationship graph
+			    var dataset = [
+			        [],[],[],[]
+			    ];
 
+			    //2 entries for the gender graph
+			    var dataset2 = [
+			        [],[]
+			    ];
+
+				var color_gender = {  0 : ["Males", "#3366CC"],
+								    1 : ["Females", "#DC3912"],
+								  }; 
+
+			    var color_relationships = {  0 : ["Single", "#FF9900"],
+								    1 : ["In A Relationship", "#109618"],
+								    2 : ["Married", "#990099"],
+								    3 : ["Unknown", "#FF00FF"]
+								  };                     
+
+				// Create SVG element
+				var svg = d3.select("body")
+				    .append("svg")
+				    .attr("width", w)
+				    .attr("height", h);
+
+
+
+				//Relationship
+				var legendRelationships = svg.append("g")
+				  .attr("class", "legend")
+				  .attr("x", w - 65)
+				  .attr("y", 25)
+				  .attr("height", 100)
+				  .attr("width", 300);
+
+				var legendGender = svg.append("g")
+				  .attr("class", "legend")
+				  .attr("x", w)
+				  .attr("y", 25)
+				  .attr("height", 100)
+				  .attr("width", 300);  
+
+				legendRelationships.selectAll('g').data(dataset)
+			      .enter()
+			      .append('g')
+			      .each(function(d, i) {
+			        var g = d3.select(this);
+			        g.append("rect")
+			          .attr("x", w - 125)
+			          .attr("y", i*25 + 4)
+			          .attr("width", 10)
+			          .attr("height", 10)
+			          .style("fill", color_relationships[String(i)][1]);
+			        
+			        g.append("text")
+			          .attr("x", w - 110)
+			          .attr("y", i * 25 + 15)
+			          .attr("height",30)
+			          .attr("width",300)
+			          .style("fill", color_relationships[String(i)][1])
+			          .text(color_relationships[String(i)][0]);
+			      });
+
+			      //Gender Legend
+			      legendGender.selectAll('g').data(dataset2)
+			      .enter()
+			      .append('g')
+			      .each(function(d, i) {
+			        var g = d3.select(this);
+			        g.append("rect")
+			          .attr("x", w - 400)
+			          .attr("y", i*25 + 4)
+			          .attr("width", 10)
+			          .attr("height", 10)
+			          .style("fill", color_gender[String(i)][1]);
+			        
+			        g.append("text")
+			          .attr("x", w - 385)
+			          .attr("y", i * 25 + 15)
+			          .attr("height",30)
+			          .attr("width",300)
+			          .style("fill", color_gender[String(i)][1])
+			          .text(color_gender[String(i)][0]);
+			      });
+	});
+	// end json call
 });
-
+// end doc ready
 
 
 
