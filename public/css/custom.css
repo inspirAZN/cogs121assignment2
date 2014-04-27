@@ -55,6 +55,8 @@ svg text.percent{
 	text-indent: 999em;
 	overflow: hidden;
 	animation: spin 1s infinite steps(8);
+	-webkit-animation: spin 1s infinite steps(8);
+
 }
 
 .small.progress {
