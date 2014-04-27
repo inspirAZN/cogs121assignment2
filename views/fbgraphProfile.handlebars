@@ -338,12 +338,13 @@ $(document).ready(function() {
 	          .attr("width",300)
 	          .style("fill", color_relationships[String(i)][1])
 	          .text(color_relationships[String(i)][0]);
+	      }
 
 	    //Gender Legend
-	      legendGender.selectAll('g').data(dataset2)
-	      .enter()
-	      .append('g')
-	      .each(function(d, i) {
+	    legendGender.selectAll('g').data(dataset2)
+	    .enter()
+	    .append('g')
+	    .each(function(d, i) {
 	        var g = d3.select(this);
 	        g.append("rect")
 	          .attr("x", w - 400)
@@ -361,6 +362,7 @@ $(document).ready(function() {
 	          .text(color_gender[String(i)][0]);
 		}
 	}
+
 });
 
 
