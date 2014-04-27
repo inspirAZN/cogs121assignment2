@@ -115,7 +115,7 @@ exports.getDemographics = function (req, res) {
 		demoJSON.single = numSingle;
 		demoJSON.relationship = numRelation;
 		demoJSON.married = numMarried;
-		demoJSON.unknonw = numUnknown;
+		demoJSON.unknown = numUnknown;
 
 
 	// send demographic json
