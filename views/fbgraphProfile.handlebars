@@ -210,8 +210,9 @@ $(document).ready(function() {
 					inARelationship = response.relationship;
 					married = response.married;
 					unknown = response.unknown;
-				});
-			//Fields used to set the information needed for the gender graph
+
+
+					//Fields used to set the information needed for the gender graph
 
 			var genderData=[
 				{label:"Boys", color:"#3366CC", value:boys},
@@ -375,6 +376,8 @@ $(document).ready(function() {
 			          .style("fill", color_gender[String(i)][1])
 			          .text(color_gender[String(i)][0]);
 			      });
+				});
+			
 	});
 	// end json call
 });
