@@ -72,12 +72,12 @@
 			      <div class="modal-body">
 			      		<div class="row">
 				  			<div class="col-lg-10 col-lg-offset-1" id="myGraph">
-				  				<div id="loader" class="small progress"><div>Loading…</div></div>
+				  				<div id="loader" class="small progress col-lg-offset-2"><div>Loading…</div></div>
 								<!-- Populate svg d3 graph here -->
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-lg-6 col-lg-offset-2">
+							<div class="col-lg-6">
 								<div class="row-fluid" id="otherGraph">
 								</div>
 								<div class="row-fluid" id="legend">
@@ -299,8 +299,8 @@ $(document).ready(function() {
 										//30 is the height of the chart (shadowed area)
 										//0.4 is inner radius
 			//Draws gender data chart 			
-			Donut3D.draw("genderDonut", defaultGenData(), 150, 150, 130, 100, 30, 0.4);
-			Donut3D.draw("relationshipDonut", defaultRelationData(), 450, 150, 130, 100, 30, 0);
+			Donut3D.draw("genderDonut", defaultGenData(), 140, 150, 130, 100, 30, 0.4);
+			Donut3D.draw("relationshipDonut", defaultRelationData(), 420, 150, 130, 100, 30, 0);
 
 			//Transitions between gender and relationship fields
 			function changeData(){
