@@ -125,7 +125,7 @@
 $(document).ready(function() {
 	// make an ajax call to get friend demographics
 
-	d3.json('/fbgraph/friends_relationships', function(error, response) {
+	d3.json('/fbgraph/friendDemographics', function(error, response) {
 			if (error) return console.warn(error);
 
 			// set the data of the arcs

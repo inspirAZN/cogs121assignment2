@@ -86,17 +86,18 @@ exports.getDemographics = function (req, res) {
 				numFemale++;
 			}
 		}
-
-	});
-	
-	
-	// save to demographic json
+		// save to demographic json
 		demoJSON.male = numMale;
 		demoJSON.female = numFemale;
 
 
 	// send demographic json
 		res.send(demoJSON);
+
+	});
+	
+	
+	
 
 }
 
