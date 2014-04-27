@@ -168,8 +168,8 @@ $(document).ready(function() {
 
 	$('#analyz').click(function() {
 
-			$('#analyzr').modal('show');
-		
+		$('#analyzr').modal('show');
+
 		d3.json('/fbgraph/friendDemographics', function(error, response) {
 			if (error) return console.warn(error);
 
@@ -193,7 +193,7 @@ $(document).ready(function() {
 						.attr('height', 500);			// svg canvas
 
 			var group = canvas.append('g')
-						.attr('transform', 'translate(200,250)');	// group container
+						.attr('transform', 'translate(230,250)');	// group container
 
 			var arc = d3.svg.arc() 
 						.innerRadius(125)
@@ -429,10 +429,10 @@ $(document).ready(function() {
 			// end json call
 
 		});
-			$('#analyzr').on('hidden.bs.modal', function (e) {
-				// reset everything in the modal
-				$('#loader').show();
-			});	
+			// $('#analyzr').on('hidden.bs.modal', function (e) {
+			// 	// reset everything in the modal
+			// 	$('#loader').show();
+			// });	
 });
 // end doc ready
 
