@@ -168,12 +168,10 @@ $(document).ready(function() {
 
 	$('#analyz').click(function() {
 
+			$('#analyzr').modal('show');
+		
 		d3.json('/fbgraph/friendDemographics', function(error, response) {
 			if (error) return console.warn(error);
-
-
-			$('#analyzr').modal('show');
-
 
 			// set the data of the arcs
 			console.log(response);
