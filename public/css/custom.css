@@ -41,6 +41,10 @@ svg text.percent{
 	to { transform: rotate(1turn); }
 }
 
+@-webkit-keyframes {
+	to { -webkit-transform: rotate(1turn); }
+}
+
 .progress {
 	position: relative;
 	display: inline-block;
@@ -59,10 +63,6 @@ svg text.percent{
 
 .large.progress {
 	font-size: 24px;
-}
-
-@keyframes spin {
-	to { transform: rotate(1turn); }
 }
 
 .progress:before,
