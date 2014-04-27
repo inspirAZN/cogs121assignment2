@@ -206,6 +206,10 @@ $(document).ready(function() {
 					dataType: 'json'
 				}).done( function(response) {
 					console.log(response);
+					single = response.single;
+					inARelationship = response.relationship;
+					married = response.married;
+					unknown = response.unknown;
 				});
 			//Fields used to set the information needed for the gender graph
 
@@ -224,16 +228,16 @@ $(document).ready(function() {
 
 			//Default graph. Used to transition to genderData
 			var defaultGenderData=[
-				{label:"Boys", color:"#3366CC", value:50},
-				{label:"Girls", color:"#DC3912", value:50},
+				{label:"Boys", color:"#3366CC", value:boys},
+				{label:"Girls", color:"#DC3912", value:girls},
 			];	
 
 			//Default graph. Used to transition to relationshipData.
 			var defaultRelationshipData=[
-				{label:"Single", color:"#FF9900", value:50},
-				{label:"In a Relationship", color:"#109618", value:50},
-				{label:"Married", color:"#990099", value:50},
-				{label:"Unknow", color:"#FF00FF", value:50}
+				{label:"Single", color:"#FF9900", value:single},
+				{label:"In a Relationship", color:"#109618", value:inARelationship},
+				{label:"Married", color:"#990099", value:married},
+				{label:"Unknow", color:"#FF00FF", value:unknown}
 			];
 
 
