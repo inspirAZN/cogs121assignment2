@@ -41,8 +41,8 @@ svg text.percent{
 	to { transform: rotate(1turn); }
 }
 
-@-webkit-keyframes {
-	to { -webkit-transform: rotate(360deg); }
+@-webkit-keyframes spin{
+	to { -webkit-transform: rotate(1turn); }
 }
 
 .progress {
