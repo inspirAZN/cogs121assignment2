@@ -90,36 +90,6 @@ exports.getDemographics = function (req, res) {
 		demoJSON.male = numMale;
 		demoJSON.female = numFemale;
 
-
-		var query = "SELECT uid, name, relationship_status FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())";
-		var demoJSON = {};
-		var numSingle = 0;
-		var numRelation = 0;
-		var numMarried = 0;
-		var numUnknown = 0;
-		auth.graph.fql(query, function(err, json) {
-			// loop through and count relations
-			for( var i = 0;i < json.data.length; i++) {
-				// calculate 
-				if( json.data[i].relationship_status == 'In a relationship') {
-					numRelation++;
-				} else if( json.data[i].relationship_status == 'Single' ) {
-					numSingle++;
-				} else if( json.data[i].relationship_status == 'Married' ){
-					numMarried++;
-				} else {
-					numUnknown++;
-				}
-			}
-			demoJSON.single = numSingle;
-			demoJSON.relationship = numRelation;
-			demoJSON.married = numMarried;
-			demoJSON.unknown = numUnknown;
-
-			res.send(demoJSON);
-		})
-
-
 		// send demographic json
 		res.send(demoJSON);
 

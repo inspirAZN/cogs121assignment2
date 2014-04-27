@@ -191,12 +191,22 @@ $(document).ready(function() {
 
 			var girls = response.female;
 
-			//Values for relationships. Would be taken from JSON
-			var single = 100;
-			var inARelationship = 200;
-			var married = 300;
-			var unknown = 400;
 
+
+
+			//Values for relationships. Would be taken from JSON
+			var single = 0;
+			var inARelationship = 0;
+			var married = 0;
+			var unknown = 0;
+
+			$.ajax({
+					type: 'GET',
+					url: '/fbgraph/friends_relationships',
+					dataType: 'json'
+				}).done( function(response) {
+					console.log(response);
+				});
 			//Fields used to set the information needed for the gender graph
 
 			var genderData=[
