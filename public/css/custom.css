@@ -61,6 +61,10 @@ svg text.percent{
 	font-size: 24px;
 }
 
+@keyframes spin {
+	to { transform: rotate(1turn); }
+}
+
 .progress:before,
 .progress:after,
 .progress > div:before,
