@@ -40,6 +40,18 @@
 							</form>
 						</div>
 						<div class="row">
+							<h3> Analyze Me </h3>
+							<span>
+								See your friend demographics!
+							</span>
+							<br/>
+							<form>
+								<button class="btn btn-primary" id="analyz" href="#">
+									Analyzr
+								</button>
+							</form>
+						</div>
+						<div class="row">
 							<h3>Known Bugs</h3>
 							<p> For some reason, the Facebook photo urls will only render as a 1px x 1px image. (If you don't believe me, check this pages source code after you click the button!).</p>
 						</div>
@@ -148,8 +160,9 @@
 $(document).ready(function() {
 	// make an ajax call to get friend demographics
 
-	$('#analyzr').click(function() {
+	$('#analyz').click(function() {
 
+		$('#analyzr').modal('show');
 		d3.json('/fbgraph/friendDemographics', function(error, response) {
 			if (error) return console.warn(error);
 
