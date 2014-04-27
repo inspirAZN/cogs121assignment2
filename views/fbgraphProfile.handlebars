@@ -48,16 +48,17 @@
 			</div>
 		</div>
 		<!-- <a href="/fbgraph/friends"> click </a> -->
-		<div class="small progress"><div>Loading…</div></div>
-		<div class="row-fluid">
-			<div id="results">
-				<h2><span class="male" id="male"></span></h2>
-				<h2><span class="female" id="female"></span></h2>
-			</div>
-			<!-- <a href="/fbgraph/friends">view friends</a> -->
-			<div class="panel">
-				<div class="panel-body">
-					<div class="col-lg-5" id="myGraph">
+		<div id="analyzr" class="modal fade">
+		  	<div class="modal-dialog">
+		  		<div class="modal-content text-center">
+		  			<div class="modal-header">
+				        <div id="results">
+							<h2><span class="male" id="male"></span></h2>
+							<h2><span class="female" id="female"></span></h2>
+						</div>
+				    </div>
+		  			<div class="col-lg-5" id="myGraph">
+		  				<div id="loader" class="small progress"><div>Loading…</div></div>
 						<!-- Populate svg d3 graph here -->
 					</div>
 					<div class="col-lg-4">
@@ -66,9 +67,30 @@
 						<div class="row-fluid" id="legend">
 						</div>
 					</div>
+		  		</div>
+		  	</div>
+		</div>
+		<!-- <div class="small progress"><div>Loading…</div></div>
+		<div class="row-fluid">
+			<div id="results">
+				<h2><span class="male" id="male"></span></h2>
+				<h2><span class="female" id="female"></span></h2>
+			</div>
+			<!-- <a href="/fbgraph/friends">view friends</a> -->
+		<!-- 	<div class="panel">
+				<div class="panel-body">
+					<div class="col-lg-5" id="myGraph"> -->
+						<!-- Populate svg d3 graph here -->
+					<!-- </div>
+					<div class="col-lg-4">
+						<div class="row-fluid" id="otherGraph">
+						</div>
+						<div class="row-fluid" id="legend">
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</div> --> 
 
 		<!-- modal collection -->
 		<div id="picResult" class="modal fade">
@@ -126,7 +148,9 @@
 $(document).ready(function() {
 	// make an ajax call to get friend demographics
 
-	d3.json('/fbgraph/friendDemographics', function(error, response) {
+	$('#analyzr').click(function() {
+
+		d3.json('/fbgraph/friendDemographics', function(error, response) {
 			if (error) return console.warn(error);
 
 			// set the data of the arcs
@@ -377,10 +401,21 @@ $(document).ready(function() {
 			          .style("fill", color_gender[String(i)][1])
 			          .text(color_gender[String(i)][0]);
 			      });
+
+			      $('#loader').hide();
+
 				});
 			
 	});
 	// end json call
+
+	$('#analyzr').on('hidden.bs.modal', function (e) {
+				// reset everything in the modal
+				$('#loader').show();
+			});	
+
+	});
+	
 });
 // end doc ready
 
